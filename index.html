@@ -1,0 +1,4056 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashDoze</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- 2) then your bottom‐bar rules -->
+    <link rel="stylesheet" href="/css/bottombar.css" />
+    <link rel="stylesheet" href="/css/newsidebar.css">
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+  <!-- ✅ Google Ads Tag (Only for Indian Users) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11028819005"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-11028819005');
+  </script>
+
+  <!-- ✅ Event snippet for Sign-up conversion -->
+  <script>
+    gtag('event', 'conversion', {'send_to': 'AW-11028819005/_CkuCKH9k-QaEL3Y-Yop'});
+  </script>
+
+
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" href="https://gamexapp.b-cdn.net/images/cashdoze.png">
+    <link rel="icon" href="https://gamexapp.b-cdn.net/images/cashdoze.png">
+    <style>
+ /* Keep all your existing CSS styles */
+        :root {
+            --primary-color: #6c5ce7;
+            --primary-color-light: #8775f7;
+            --secondary-color: #00cec9;
+            --accent-color: #fdcb6e;
+            --bg-dark: #121224;
+            --bg-card: #1a1d24;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+            --shadow-color: rgba(108, 92, 231, 0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+            --fixed-color: #f0f0f0;
+        }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Remove blue highlight on all elements */
+*:focus,
+*:active {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.offer-card-bitlab h3,
+.offer-card-timewall h3,
+.offer-card-offerpro h3,
+.offer-card-pubscale h3,
+.offer-card-adscend h3,
+.offer-card-ayet h3,
+.offer-card-playfull h3 {
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+/* Main Content Container - Fixed scrolling */
+.main-content {
+    margin-top: 60px;
+   height: calc(108vh - 60px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    z-index: 1;
+}
+
+/* Better scrollbar styling */
+.main-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color-light);
+}
+
+/* Header - Fixed positioning */
+header {
+    padding: 0.2rem 1.2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: #212142;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Navigation styles */
+.nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.hamburger-menu {
+    font-size: 1.7rem;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
+.header-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+/* Coin balance styling */
+.coin-balance {
+    font-family: 'Lexend Deca', sans-serif;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 0.3rem 0.8rem;
+    background-color: var(--fixed-color);
+    border-radius: var(--border-radius);
+    color: #fa709a;
+}
+
+.coin-balance .coin-logo {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+/* Offer sections */
+.offer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0rem;
+    padding: 1rem 1rem 1rem 1rem; /* Changed: removed right padding on mobile */
+    min-height: fit-content;
+}
+
+.offer-section:last-child {
+    padding-bottom: 6rem;
+}
+
+.offer-section h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 600;
+}
+    .section-header h2 {
+        margin-left: -1.2rem;
+    }
+
+
+/* FIXED: View All Button - Removed border and outline issues */
+.view-all-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color-light));
+    color: white;
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-family: 'Lexend Deca', sans-serif;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.view-all-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+}
+
+.view-all-btn:active {
+    transform: translateY(0);
+}
+
+.view-all-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.3);
+}
+
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(108, 92, 231, 0.9);
+    backdrop-filter: blur(10px);
+    border: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+    font-family: 'Font Awesome 6 Free';
+}
+
+.nav-arrow:hover {
+    opacity: 1;
+    background: rgba(108, 92, 231, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow-left {
+    left: -15px;
+}
+
+.nav-arrow-right {
+    right: -15px;
+}
+
+.nav-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(0.9);
+}
+
+/* Offer containers - Reduced gap between cards */
+
+/* Fix for surveys container - Make profile card start the scroll */
+.offer-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100vw;
+    padding: 18px 3px 20px 18px; 
+    margin: 0 -15px 0 -23px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+
+.offer-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Base styles for all offer cards */
+[class^="offer-card-"],
+.featured-offer-card {
+    flex: 0 0 auto;
+    width: 8.5rem;
+    min-width: 8.5rem;
+    border: 1px solid #375658;
+    border-radius: 1rem;
+    padding: 1rem;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    z-index: 1;
+    margin: 0 2px;
+}
+
+/* Featured offer badge styling */
+.featured-offer-card {
+    position: relative;
+}
+
+/* New improved platform badge */
+.platform-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px; /* 20px se 24px */
+    height: 24px; /* 20px se 24px */
+    border-radius: 8px; /* 6px se 8px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px; /* 10px se 11px */
+    color: white;
+    font-weight: 600;
+    z-index: 2;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Better shadow */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Better border */
+    font-family: 'Font Awesome 6 Brands', 'Font Awesome 6 Free';
+    backdrop-filter: blur(10px); /* Glass effect */
+}
+
+/* Enhanced platform colors */
+.platform-badge.android {
+    background: linear-gradient(135deg, #1da75b, #24a85d);
+    box-shadow: 0 3px 8px rgba(29, 167, 91, 0.4);
+}
+
+.platform-badge.ios {
+    background: linear-gradient(135deg, #007aff, #0056cc);
+    box-shadow: 0 3px 8px rgba(0, 122, 255, 0.4);
+}
+
+.platform-badge.both {
+    background: linear-gradient(135deg, #3ddc84 0%, #007aff 100%);
+    box-shadow: 0 3px 8px rgba(61, 220, 132, 0.4);
+}
+
+.platform-badge.web {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    box-shadow: 0 3px 8px rgba(155, 89, 182, 0.4);
+}
+
+
+.platform-badge i {
+    font-size: 11px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Featured Offers Styling */
+.featured-offer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #4a5568;
+    background-image: linear-gradient(180deg, #1f202f 9.2%, #293d3c 103.9%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Regular offer card backgrounds */
+.offer-card-timewall,.offer-card-offerpro {
+    background-image: linear-gradient(180deg, #1f202f 9.2%, #293d3c 103.9%);
+}
+
+/* Ayet = dark base + warm amber/orange tint */
+.offer-card-ayet{
+  background-image: linear-gradient(180deg, #2f241f 9.2%, #e47947f1 103.9%) !important;
+}
+
+.offer-card-mychip {
+  background: linear-gradient(135deg, #ffe216 4%, #f8c953 29%, #f99d25 58%);
+}
+
+
+
+.offer-card-bitlab,
+.offer-card-bitlabsurvey {
+    background-image: linear-gradient(180deg, #212134 9.2%, #433e6e 103.9%);
+}
+
+/* Badge styles */
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #dc3545; /* Red color */
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Optional: Add a slight shadow for better visibility */
+.badge {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Different badge colors for different cards */
+
+.offer-card-bitlabsurvey .badge, .offer-card-timewall .badge, .offer-card-offerpro .badge{
+    margin-left: -0.9rem;
+    margin-top: -0.8rem;
+    background-color: #dc3545; /* Red */
+}
+
+/* Badge styles ends */
+
+.offer-card-theoremreach,
+.offer-card-playfull {
+    background-image: linear-gradient(180deg, #1e1f2f 9.2%, #243c55 103.9%);
+}
+
+.offer-card-pubscale {
+    background-image: linear-gradient(180deg, #211f2e 9.2%, #2e2b40 103.9%);
+}
+
+.offer-card-adscend {
+    background-image: linear-gradient(180deg, #1f1f2f 9.2%, #3f4859 103.9%);
+}
+
+/* Hover effects */
+[class^="offer-card-"]:hover,
+.featured-offer-card:hover {
+    border-color: var(--primary-color);
+}
+
+[class^="offer-card-"]:active,
+.featured-offer-card:active {
+    border-color: var(--primary-color-light);
+}
+
+/* Desktop main offer cards - logo size increase */
+.offer-logo {
+    width: 100%;
+    height: 70px; /* 60px se 70px */
+    object-fit: contain;
+    margin-bottom: 10px;
+    margin-top: 15px; /* 17px se 15px */
+    border-radius: 8px;
+}
+
+
+.featured-offer-image {
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    margin-top: 17px;
+    border-radius: 8px;
+      /* new: disable clicking, dragging & selecting */
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.featured-offer-name {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0.3rem 0 0.3rem 0;
+    line-height: 1.2;
+    color: var(--text-light);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Lexend Deca', sans-serif;
+    white-space: nowrap;
+}
+
+/* Payout display styling */
+.featured-offer-payout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fdcb6e;
+    margin: 0;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.featured-offer-payout .coin-icon {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+}
+
+.rating .star {
+    font-size: 14px;
+    color: #fff;
+}
+
+.rating .star.filled {
+    color: #ffd700;
+}
+
+/* Loading states */
+.featured-loading,
+.featured-error,
+.featured-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--text-gray);
+    text-align: center;
+    width: 100%;
+    min-width: 200px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.loading-spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.retry-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.retry-button:hover {
+    background-color: var(--primary-color-light);
+}
+
+/* FULL SCREEN Modal Styles - Mobile first approach */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-dark);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* MOBILE: Complete Full Screen Modal Content */
+.modal-content {
+    background: var(--bg-dark);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+    box-shadow: none;
+    position: relative;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color-light));
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 600;
+}
+
+.close-modal {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    font-family: 'Font Awesome 6 Free';
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* Filter Section */
+.filter-section {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    position: sticky;
+    top: 70px;
+    z-index: 9;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-gray);
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.filter-tab:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    transform: translateY(-1px);
+}
+
+.filter-tab.active {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+}
+
+.filter-tab i {
+    font-family: 'Font Awesome 6 Brands', 'Font Awesome 6 Free';
+}
+
+/* MOBILE: Vertical List Style Modal Offers Container */
+.modal-offers-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+    background: var(--bg-dark);
+}
+
+.modal-offers-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-offers-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.modal-offers-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+/* MOBILE: Vertical List Modal Offer Card - Larger sizes */
+/* Restructure modal offer card layout */
+.modal-offer-card {
+    background: linear-gradient(135deg, #2a2d47 0%, #1f202f 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Changed from center to flex-start */
+    gap: 1.2rem;
+    animation: slideInFromLeft 0.3s ease forwards;
+    min-height: 80px; /* Increased from 75px */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal offer content - Better structure for name and coin */
+.modal-offer-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem; /* Increased gap */
+    min-width: 0;
+    padding-right: 0.5rem;
+    justify-content: center; /* Center the content vertically */
+}
+
+/* Move payout to content area instead of separate */
+.modal-offer-payout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Left align instead of center */
+    gap: 0.4rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    font-family: 'Lexend Deca', sans-serif;
+    background: rgba(253, 203, 110, 0.15);
+    padding: 0.4rem 0.8rem; /* Reduced padding */
+    border-radius: 20px; /* More rounded */
+    width: fit-content; /* Only as wide as needed */
+    border: 1px solid rgba(253, 203, 110, 0.3);
+    margin-top: 0.2rem;
+}
+
+
+.modal-offer-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
+}
+
+/* Platform badge for modal - Better positioning */
+.modal-offer-card .platform-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    border-radius: 6px;
+    z-index: 3;
+}
+
+/* Modal offer image - Larger size */
+.modal-offer-image {
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+}
+
+
+/* Larger offer name */
+.modal-offer-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-light);
+    font-family: 'Lexend Deca', sans-serif;
+    line-height: 1.3;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Remove task descriptions completely */
+.modal-offer-description {
+    display: none;
+}
+
+
+.modal-offer-payout .coin-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.modal-loading,
+.modal-error,
+.modal-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    color: var(--text-gray);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    min-height: 50vh;
+}
+
+/* Loading Overlay */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+#loading-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#loading-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.spinner {
+    width: 4rem;
+    height: 4rem;
+    border: 8px solid #FFFFFF;
+    border-top: 8px solid #3bba6a;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* General styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h3, h4, h5 {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+/* DESKTOP RESPONSIVE - Grid Layout for Desktop */
+@media (min-width: 1024px) {
+      .modal-offer-image {
+        width: 70px; /* 60px se 70px */
+        height: 70px; /* 60px se 70px */
+        min-width: 70px; /* 60px se 70px */
+        align-self: center;
+        margin-bottom: 0.5rem;
+    }
+
+
+      .modal-offer-details {
+    align-items: center !important;
+    justify-content: center;     /* optional, if you want payout centered too */
+  }
+  .modal-offer-content {
+    padding-right: 0 !important; /* remove that extra right padding */
+    text-align: center;          /* make sure h4 is centered */
+  }
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+        width: 90%;
+        max-width: 1200px;
+        height: 85vh;
+        border-radius: var(--border-radius);
+        transform: scale(0.8) translateY(50px);
+        background: var(--bg-card);
+    }
+    
+    .modal-overlay.active .modal-content {
+        transform: scale(1) translateY(0);
+    }
+    
+    .modal-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    /* DESKTOP: Grid Layout - 5 columns */
+    .modal-offers-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.5rem;
+        padding: 1.5rem;
+        align-content: start;
+    }
+    
+    /* DESKTOP: Card Style - Compact grid cards with proper coin positioning */
+    .modal-offer-card {
+        flex-direction: column;
+        align-items:center;
+        padding: 1.2rem;
+        min-height: 180px;
+        gap: 1rem;
+        background: linear-gradient(135deg, #2a2d47 0%, #1f202f 100%);
+        position: relative;
+    }
+    
+    /* Desktop platform badge positioning */
+    .modal-offer-card .platform-badge {
+        top: 8px;
+        right: 8px;
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+    
+    .modal-offer-image {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        align-self: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .modal-offer-content {
+        text-align: center;
+        align-items: center;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .modal-offer-name {
+        font-size: 1rem;
+        text-align: center;
+        -webkit-line-clamp: 2;
+        line-height: 1.2;
+    }
+    
+    /* Hide description on desktop too */
+    .modal-offer-description {
+        display: none;
+    }
+    
+    /* Desktop: Fixed coin positioning */
+    .modal-offer-payout {
+        align-self: center;
+        font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+        min-width: 70px;
+        margin-top: 0.7rem;
+        position: relative;
+        z-index: 2;
+        background: rgba(253, 203, 110, 0.15);
+        border: 1px solid rgba(253, 203, 110, 0.3);
+    }
+    
+    .modal-offer-payout .coin-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* TABLET RESPONSIVE */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+        width: 95%;
+        height: 90vh;
+        border-radius: var(--border-radius);
+        transform: scale(0.9) translateY(30px);
+        background: var(--bg-card);
+    }
+    
+    .modal-overlay.active .modal-content {
+        transform: scale(1) translateY(0);
+    }
+    
+    /* TABLET: Grid Layout - 3 columns */
+    .modal-offers-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+        padding: 1.2rem;
+    }
+    
+    .modal-offer-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+        min-height: 160px;
+        gap: 0.8rem;
+    }
+    
+    .modal-offer-image {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        align-self: center;
+    }
+    
+    .modal-offer-content {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .modal-offer-name {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .modal-offer-payout {
+        align-self: center;
+        font-size: 1rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+/* MOBILE RESPONSIVE - Keep vertical list */
+@media (max-width: 767px) {
+    .nav-arrow {
+        display: none !important;
+    }
+    
+    .view-all-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .modal-header {
+        padding: 1rem;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .filter-section {
+        padding: 0.8rem;
+    }
+    
+    .modal-offers-container {
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+    
+    .modal-offer-card {
+        padding: 1rem;
+        min-height: 70px;
+        gap: 1rem;
+    }
+    
+    .modal-offer-image {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+    }
+    
+    .modal-offer-name {
+        font-size: 1.1rem;
+    }
+    
+    .modal-offer-payout {
+        font-size: 1.1rem;
+        padding: 0.5rem 0.8rem;
+        min-width: 75px;
+    }
+    
+    .modal-offer-payout .coin-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 1.3rem;
+    }
+    
+    .coin-balance {
+        font-size: 1rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .offer-section {
+        padding: 0.8rem 0.8rem;
+        padding-right: 0rem;
+    }
+    
+    .offer-container {
+        padding: 15px 10px;
+        margin: 0 -10px;
+        gap: 0.3rem;
+    }
+    
+    .main-content {
+        height: calc(100vh - 85px);
+    }
+    
+    [class^="offer-card-"],
+    .featured-offer-card {
+        margin: 0 1px;
+    }
+
+    .platform-badge {
+        width: 18px;
+        height: 18px;
+        top: 6px;
+        right: 6px;
+    }
+
+    .platform-badge i {
+        font-size: 10px;
+    }
+
+    .modal-offers-container {
+        padding: 0.8rem;
+        gap: 0.6rem;
+    }
+    
+    .modal-offer-card {
+        padding: 0.8rem;
+        min-height: 65px;
+        gap: 0.8rem;
+    }
+    
+    .modal-offer-image {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+    }
+    
+    .filter-tab {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+    }
+    
+    .modal-offer-name {
+        font-size: 1rem;
+    }
+    
+    .modal-offer-payout {
+        font-size: 1rem;
+        padding: 0.4rem 0.6rem;
+        min-width: 70px;
+    }
+}
+/* Mobile modal - larger offer image and name */
+@media (max-width: 767px) {
+    .modal-offer-image {
+        width: 60px; /* 50px se 60px */
+        height: 60px; /* 50px se 60px */
+        min-width: 60px; /* 50px se 60px */
+    }
+    
+    .modal-offer-name {
+        font-size: 1.2rem; /* 1.1rem se 1.2rem */
+        font-weight: 600;
+        line-height: 1.3;
+        margin-bottom: 0.5rem; /* Space for coin below */
+    }
+    
+    /* Coin below offer name */
+    .modal-offer-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem; /* Reduced gap */
+        min-width: 0;
+        padding-right: 0.5rem;
+    }
+    
+    /* Adjust modal card layout for better coin positioning */
+    .modal-offer-card {
+        padding: 1rem;
+        min-height: 80px; /* 70px se 80px */
+        gap: 1rem;
+        align-items: flex-start; /* Change from center to flex-start */
+    }
+    
+    /* Platform badge adjustment for mobile modal */
+    .modal-offer-card .platform-badge {
+        top: 8px;
+        right: 8px;
+        width: 24px; /* 22px se 24px */
+        height: 24px; /* 22px se 24px */
+        font-size: 12px; /* 11px se 12px */
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .modal-offer-image {
+        width: 55px; /* 45px se 55px */
+        height: 55px; /* 45px se 55px */
+        min-width: 55px; /* 45px se 55px */
+    }
+    
+    .modal-offer-name {
+        font-size: 1.15rem; /* 1rem se 1.15rem */
+    }
+    
+    .modal-offer-card {
+        min-height: 80px; /* 65px se 75px */
+    }
+}
+.modal-offer-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;          
+}
+
+@media (max-width: 767px) {
+  .modal-offer-card {
+    padding: 0.5rem 0.7rem;
+  }
+  .modal-offer-name {
+    font-size: 1rem;
+  }
+  .modal-offer-payout {
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    padding: 0.2rem 0.6rem;
+    overflow: hidden;
+  }
+  .modal-offer-payout .coin-icon {
+    width: 12px;
+    height: 12px;
+  }
+  .modal-offer-details {
+    overflow: hidden;
+  }
+}
+/* Make your cards real links, remove underline & default outline */
+.featured-offer-card {
+  display: flex;                /* keep your flex‐layout */
+  flex-direction: column;       /* as before */
+  text-decoration: none;        /* no link underline */
+  outline: none;                /* remove default focus ring */
+  -webkit-tap-highlight-color: transparent; /* no mobile tap flash */
+}
+
+/* If ever focused (keyboard), don’t show any outline/shadow */
+.featured-offer-card:focus,
+.featured-offer-card:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove selection highlight and fix modal offer styling */
+.modal-offer-card {
+    /* Remove text selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    /* Remove link styling */
+    text-decoration: none !important;
+    color: inherit;
+    
+    /* Remove tap highlight on mobile */
+    -webkit-tap-highlight-color: transparent;
+    
+    /* Remove focus outline */
+    outline: none !important;
+}
+
+/* Remove selection from all children */
+.modal-offer-card * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none; /* Disable selection on child elements */
+}
+
+/* Re-enable pointer events for the card itself */
+.modal-offer-card {
+    pointer-events: auto !important;
+}
+
+/* Disable dragging for images */
+.modal-offer-image,
+.modal-offer-card img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+}
+
+/* Remove blue highlight when selected/focused */
+.modal-offer-card:focus,
+.modal-offer-card:active,
+.modal-offer-card:visited {
+    outline: none !important;
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3) !important;
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Ensure hover effect still works */
+.modal-offer-card:hover {
+    border-color: var(--primary-color) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3) !important;
+}
+
+/* Remove any default link styling */
+a.modal-offer-card {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+a.modal-offer-card:visited {
+    color: inherit !important;
+}
+
+a.modal-offer-card:hover {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+/* Remove selection highlight and fix styling for ALL offer cards */
+[class^="offer-card-"],
+.featured-offer-card {
+    /* Remove text selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    /* Remove tap highlight on mobile */
+    -webkit-tap-highlight-color: transparent;
+    
+    /* Remove focus outline */
+    outline: none !important;
+    
+    /* Ensure cursor pointer */
+    cursor: pointer;
+}
+
+/* Remove selection from all children of offer cards */
+[class^="offer-card-"] *,
+.featured-offer-card * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none; /* Disable selection on child elements */
+}
+
+/* Re-enable pointer events for the cards themselves */
+[class^="offer-card-"],
+.featured-offer-card {
+    pointer-events: auto !important;
+}
+
+/* Disable dragging and selection for ALL offer images */
+.offer-logo,
+.featured-offer-image,
+.modal-offer-image,
+[class^="offer-card-"] img,
+.featured-offer-card img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Remove blue highlight when selected/focused for all cards */
+[class^="offer-card-"]:focus,
+[class^="offer-card-"]:active,
+.featured-offer-card:focus,
+.featured-offer-card:active {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Ensure hover effects still work properly */
+[class^="offer-card-"]:hover {
+    border-color: var(--primary-color) !important;
+}
+
+.featured-offer-card:hover {
+    border-color: var(--primary-color) !important;
+}
+
+/* Remove selection highlight from text elements */
+[class^="offer-card-"] h3,
+[class^="offer-card-"] h4,
+.featured-offer-card h4,
+.featured-offer-name,
+.featured-offer-payout,
+.rating {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Remove selection from stars and other elements */
+.star,
+.coin-icon,
+.platform-badge,
+.platform-badge * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+/* wrap your arrows + view-all in a row */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* style arrows as little dark squares with accent color */
+.section-controls .nav-arrow {
+  position: static;            /* disable absolute positioning */
+  transform: none;             /* remove the translateY */
+  width: 32px;
+  height: 32px;
+  background-color: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* hover state—brighten a little */
+.section-controls .nav-arrow:hover {
+  background-color: #37364c;
+  color: #00bebb;
+}
+
+/* disable the old positioning rules */
+.nav-arrow.nav-arrow-left,
+.nav-arrow.nav-arrow-right {
+  top: auto !important;
+  /* if you had left:-15px or right:-15px, neutralize them: */
+  left: auto !important;
+  right: auto !important;
+}
+/* Mobile specific fixes */
+@media (max-width: 480px) {
+    .offer-section {
+        padding: 0.8rem 0rem; /* Remove all horizontal padding on mobile */
+    }
+    
+    .offer-container {
+        width: 100vw; /* Full viewport width */
+        padding: 15px 10px; /* Minimal padding */
+        margin: 0 0; /* Remove negative margins on mobile */
+        gap: 0.5rem;
+    }
+    
+    /* Remove any margin from main content on mobile */
+    .main-content {
+        padding: 0; /* Remove any padding */
+        margin-top: 60px;
+        height: calc(100vh - 85px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+/* Fix for section header - ensure it doesn't add extra width */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    padding: 0 1rem; /* Add padding to header instead of section */
+    box-sizing: border-box;
+}
+
+/* Mobile section header fix */
+@media (max-width: 480px) {
+    .section-header {
+        padding: 0 0.8rem; /* Match mobile padding */
+    }
+    
+    .section-header h2 {
+        margin: 0;
+        font-size: 1.4rem;
+    }
+    .offer-section > h2 {
+   margin-left: 0.6rem;
+   }
+}
+
+/* Ensure cards touch the edges properly */
+[class^="offer-card-"],
+.featured-offer-card {
+    flex: 0 0 auto;
+    width: 8.5rem;
+    min-width: 8.5rem;
+    border: 1px solid #375658;
+    border-radius: 1rem;
+    padding: 1rem;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    z-index: 1;
+    margin: 0; /* Remove any default margins */
+    box-sizing: border-box;
+}
+
+/* Fix for bottom spacing issue */
+.offer-section:last-child {
+    padding-bottom: 4rem; /* Reduced from 6rem */
+    margin-bottom: 0;
+}
+
+/* Extra mobile fixes for full edge-to-edge */
+@media (max-width: 480px) {
+    /* Ensure body has no padding affecting the cards */
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    
+    /* Make sure the first and last cards touch the edges */
+    .offer-container {
+        padding-left: 0.5rem; /* Minimal left padding */
+        padding-right: 0.5rem; /* Minimal right padding */
+    }
+    
+    /* First card should start from edge */
+    [class^="offer-card-"]:first-child,
+    .featured-offer-card:first-child {
+        margin-left: 0.3rem;
+    }
+    
+    /* Last card should end at edge */
+    [class^="offer-card-"]:last-child,
+    .featured-offer-card:last-child {
+        margin-right: 0.3rem;
+    }
+}
+
+/* skeleton shimmer */
+.skeleton {
+  position: relative;
+  background: var(--bg-card);          /* same size/color as card bg */
+  border-radius: 1rem;                 /* same as .featured-offer-card */
+  width: 8.5rem;
+  height: 10rem;                       /* adjust to match card height */
+  margin: 0 2px;
+  overflow: hidden;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: shimmer 1.2s infinite;
+}
+
+/* === Survey skeleton (same shimmer animation as .skeleton) === */
+.survey-skeleton{
+  width:8.5rem;                /* same as .survey-card */
+  height:9.5rem;               /* same as .survey-card min-height */
+  flex:0 0 auto;
+  border-radius:1rem;
+  background:var(--bg-card);
+  position:relative;
+  overflow:hidden;
+  margin:0 2px;
+}
+.survey-skeleton::after{
+  content:"";
+  position:absolute;
+  top:0; left:-100%;
+  width:100%; height:100%;
+  background:linear-gradient(
+           90deg,
+           rgba(255,255,255,0)   0%,
+           rgba(255,255,255,.08) 50%,
+           rgba(255,255,255,0) 100%);
+  animation:shimmer 1.2s infinite;
+}
+
+/* === Survey skeleton (same shimmer animation as .skeleton) === */
+.survey-skeleton{
+  width:8.5rem;                /* same as .survey-card */
+  height:9.5rem;               /* same as .survey-card min-height */
+  flex:0 0 auto;
+  border-radius:1rem;
+  background:var(--bg-card);
+  position:relative;
+  overflow:hidden;
+  margin:0 2px;
+}
+.survey-skeleton::after{
+  content:"";
+  position:absolute;
+  top:0; left:-100%;
+  width:100%; height:100%;
+  background:linear-gradient(
+           90deg,
+           rgba(255,255,255,0)   0%,
+           rgba(255,255,255,.08) 50%,
+           rgba(255,255,255,0) 100%);
+  animation:shimmer 1.2s infinite;
+}
+
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* Discord card styling: match other offer‑cards */
+.offer-card-discord {
+  flex: 0 0 auto;
+  width: 8.5rem;
+  min-width: 8.5rem;
+  border: 1px solid #375658;              /* same border */
+  border-radius: 1rem;                     /* same radius */
+  padding: 1rem;                           /* same padding */
+   background-image: linear-gradient(180deg, #1e1f2f 9.2%, #243c55 103.9%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Round the Discord logo and size it consistently */
+.offer-card-discord .offer-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;                        /* optional white bg for contrast */
+  padding: 4px;                            /* give a bit of “padding” inside */
+}
+
+/* Hover effect to match other cards */
+.offer-card-discord:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+}
+
+.offer-card-discord h4 {
+  font-size: 1rem;      /* or whatever matches your other cards */
+  text-align: center;
+  line-height: 1.2;
+  margin: 0;
+
+  white-space: normal;    /* allow wrapping */
+  word-break: break-word; /* break long words as needed */
+
+  /* remove any clamping/ellipsis */
+  display: block;
+  -webkit-line-clamp: none;
+  overflow: visible;
+}
+
+[class^="offer-card-"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.filter-tab, .filter-tab * {
+  pointer-events: auto !important;
+}
+
+/* Survey card styles - Updated with better layout */
+.survey-card {
+    flex: 0 0 auto;
+    width: 8.5rem !important;
+    min-width: 8.5rem !important;
+    border: 1px solid #375658;
+    border-radius: 1rem;
+    padding: 0.5rem !important;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+    margin: 0 2px;
+    background-image: linear-gradient(180deg, #1f2f1f 9.2%, #3d5e3d 103.9%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 9.5rem !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+}
+
+/* Remove all negative margins */
+.survey-card > * {
+    margin: 0 !important;
+}
+
+.survey-card .survey-icon {
+    width: 36px !important;
+    height: 36px !important;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px !important;
+    margin: 0.2rem 0 !important;
+    flex-shrink: 0;
+    color: white;
+}
+
+.survey-card h4 {
+    font-size: 0.9rem !important;
+    font-weight: 600;
+    margin-bottom: -0.6rem;
+    margin-top: 0.4rem;
+    padding: 0 !important;
+    font-family: 'Lexend Deca', sans-serif;
+    line-height: 1.1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
+    text-align: center;
+    min-height: 1.6rem;
+}
+
+/* New: Meta container for rating and payout */
+.survey-card .survey-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem !important;
+    width: 100%;
+    margin: 0.2rem 0 !important;
+}
+
+/* Rating stars styling - compact */
+.survey-card .survey-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    font-size: 0.65rem;
+    color: var(--text-gray);
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.survey-card .survey-rating .stars {
+    display: flex;
+    gap: 1px;
+    font-size: 10px;
+}
+
+.survey-card .survey-rating .star {
+    color: #666;
+}
+
+.survey-card .survey-rating .star.filled {
+    color: #ffd700;
+}
+
+.survey-card .survey-rating .rating-count {
+    font-size: 0.6rem;
+    color: var(--text-gray);
+    margin-left: 0.2rem;
+}
+
+.survey-card .survey-payout {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 0.85rem !important;
+    font-weight: 600;
+    color: #fdcb6e;
+    background: rgba(253, 203, 110, 0.15);
+    border: 1px solid rgba(253, 203, 110, 0.3);
+    padding: 0.15rem 0.3rem !important;
+    border-radius: 8px;
+    margin: 0 !important;
+}
+
+.survey-card .survey-payout .coin-icon {
+    width: 12px !important;
+    height: 12px !important;
+    flex-shrink: 0;
+}
+
+/* Time - now properly visible */
+.survey-card .survey-time {
+    font-size: 0.75rem !important;
+    color: var(--text-gray);
+    margin: 0.2rem 0 0 0 !important;
+    padding: 0 !important;
+    font-weight: 500;
+    text-align: center;
+}
+
+.survey-card:hover {
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 206, 201, 0.3);
+}
+
+.survey-card .survey-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    flex: 1;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+/* Mobile responsive adjustments */
+@media (max-width: 480px) {
+    .survey-card {
+        width: 7.5rem !important;
+        min-width: 7.5rem !important;
+        min-height: 9rem !important;
+        padding: 0.4rem !important;
+    }
+    
+    .survey-card .survey-icon {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 14px !important;
+        margin: 0.15rem 0 !important;
+    }
+    
+    .survey-card h4 { 
+        font-size: 0.85rem !important;
+        min-height: 1.4rem !important;
+       
+    }
+    
+    .survey-card .survey-meta {
+        gap: 0.15rem !important;
+        margin: 0.15rem 0 !important;
+    }
+    
+    .survey-card .survey-payout { 
+        font-size: 0.8rem !important;
+        padding: 0.1rem 0.25rem !important;
+    }
+    
+    .survey-card .survey-payout .coin-icon { 
+        width: 12px !important;
+        height: 12px !important;
+    }
+    
+    .survey-card .survey-time { 
+        font-size: 0.7rem !important;
+        margin: 0.15rem 0 0 0 !important;
+    }
+    
+    .survey-card .survey-rating {
+        font-size: 0.7rem;
+    }
+    
+    .survey-card .survey-rating .stars {
+        font-size: 7px;
+    }
+    
+    .survey-card .survey-rating .rating-count {
+        font-size: 0.55rem;
+    }
+    
+    
+    
+
+}
+
+/* Animation */
+.survey-card {
+    animation: slideInUp 0.5s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Prevent text selection */
+.survey-card,
+.survey-card *{
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.survey-card {
+    pointer-events: auto !important;
+}
+
+.survey-card *:not(.survey-card) {
+    pointer-events: none;
+}
+
+
+
+/* CRITICAL FIX: Dynamic surveys container - Horizontal layout with profile card scroll start */
+#dynamic-surveys-container {
+    display: flex;
+    flex-direction: row !important;
+    gap: 0.6rem;
+    align-items: stretch;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding: 0;
+}
+
+#dynamic-surveys-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Ensure survey cards don't stack vertically */
+#dynamic-surveys-container .survey-card {
+    display: inline-flex !important;
+    flex-direction: column;
+    vertical-align: top;
+    white-space: normal;
+}
+
+
+
+.offer-container > * {
+    scroll-snap-align: start;
+}
+
+
+@media (max-width: 480px) {
+   
+    /* Mobile specific horizontal layout fix */
+    #dynamic-surveys-container {
+        gap: 0.4rem;
+        padding-right: 1rem;
+    }
+}
+/* ==== CPX-router card – standalone copy of .survey-card styles ==== */
+.cpx-card{
+  flex:0 0 auto;
+  width:8rem;          
+  min-width:8rem;
+  border:1px solid #375658;
+  border-radius:1rem;
+  padding:.5rem;
+  color:#fff;
+  background-image:linear-gradient(180deg,#1f202f 9.2%,#293d3c 103.9%);
+  position:relative;
+  cursor:pointer;
+  transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+
+
+.cpx-card:hover {
+    border-color: var(--secondary-color);
+    transform: none !important;      
+    box-shadow: 0 4px 12px rgba(0, 206, 201, 0.3);
+}
+
+.cpx-icon{
+  background:transparent;
+  width:65px;height:65px;
+  margin:0 0 .35rem 0;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.cpx-icon img{
+  width:110px;height:95px;object-fit:contain;
+}
+
+
+.cpx-info{display:flex;flex-direction:column;align-items:center;gap:.25rem;}
+
+.cpx-info h4{
+  font:600 .85rem/1.2 'Lexend Deca',sans-serif;
+  margin:0;
+}
+
+
+.cpx-rating{
+  font-size:.8rem;
+  color:#ffd700;       
+  letter-spacing:.05rem;
+  margin-top:-.25rem;
+}
+
+.cpx-payout{
+  font-weight:600;
+  font-size:.8rem;
+  color:#fdcb6e;
+  background:rgba(253,203,110,.15);
+  border:1px solid rgba(253,203,110,.3);
+  padding:.15rem .45rem;
+  border-radius:8px;
+  margin-top:0;
+}
+
+@media(max-width:480px){
+  .cpx-card      { width:7.5rem;min-width:7.5rem;padding:.4rem; }
+  .cpx-icon      { width:60px;height:60px;margin-bottom:.25rem; }
+  .cpx-icon img  { width:100px;height:80px; }
+  .cpx-rating    { font-size:.7rem; }
+  .cpx-payout    { font-size:.75rem;padding:.1rem .35rem; }
+}
+/* ==== TheoremReach card – same sizing as .cpx-card, purple gradient ==== */
+
+.tr-card{
+  flex:0 0 auto;width:8rem;min-width:8rem;
+  border:1px solid #5b4fb1;border-radius:1rem;padding:.5rem;color:#fff;
+  background-image: linear-gradient(180deg, #212134 9.2%, #433e6e 103.9%);
+  position:relative;cursor:pointer;
+  transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.tr-card:hover{ border-color:#8775f7; transform:none !important; box-shadow:0 4px 12px rgba(135,117,247,.35); }
+.tr-icon{ background:transparent;width:65px;height:65px;margin:0 0 .35rem 0;border-radius:50%;display:flex;align-items:center;justify-content:center; }
+.tr-icon img{ width:110px;height:95px;object-fit:contain; }
+.tr-info{ display:flex;flex-direction:column;align-items:center;gap:.25rem; }
+.tr-info h4{ font:600 .85rem/1.2 'Lexend Deca',sans-serif;margin:0; }
+.tr-rating{ font-size:.8rem;color:#ffd700;letter-spacing:.05rem;margin-top:-.25rem; }
+.tr-payout{ font-weight:600;font-size:.8rem;color:#fdcb6e;background:rgba(253,203,110,.15);border:1px solid rgba(253,203,110,.3);padding:.15rem .45rem;border-radius:8px;margin-top:0; }
+.tr-card .tr-lock-msg { display: none !important; }
+/* Locked state overlay */
+.tr-card.is-locked { filter: grayscale(0.3) opacity(0.9); }
+.tr-card.is-locked::after{
+  content:"\f023"; /* fa-lock */
+  font-family:"Font Awesome 6 Free"; font-weight:900;
+  position:absolute; top:1px; right:8px;
+  background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.25);
+  width:26px;height:26px;border-radius:8px; display:flex;align-items:center;justify-content:center;
+}
+.tr-lock-msg{
+  position:absolute; left:6px; right:6px; bottom:6px;
+  background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.25);
+  color:#fff; font-size:.72rem; padding:.25rem .35rem; border-radius:.5rem;
+}
+@media(max-width:480px){
+  .tr-card{ width:7.5rem;min-width:7.5rem;padding:.4rem; }
+  .tr-icon{ width:60px;height:60px;margin-bottom:.25rem; }
+  .tr-icon img{ width:100px;height:80px; }
+  .tr-rating{ font-size:.7rem; }
+  .tr-payout{ font-size:.75rem;padding:.1rem .35rem; }
+  .tr-lock-msg{ font-size:.68rem; }
+}
+
+/* Playfull locked UI */
+.offer-card-playfull.is-locked { 
+  filter: grayscale(.3) opacity(.9); 
+  position: relative;
+}
+.offer-card-playfull.is-locked::after{
+  content:"\f023"; /* fa-lock */
+  font-family:"Font Awesome 6 Free"; font-weight:900;
+  position:absolute; top:8px; right:8px;
+  background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.25);
+  width:26px;height:26px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+}
+
+
+/* ==== Polltastic (SurveyWall) – pink theme ==== */
+.pt-card{
+  flex:0 0 auto;width:8rem;min-width:8rem;
+  border:1px solid #b14f8a;border-radius:1rem;padding:.5rem;color:#fff;
+  background-image: linear-gradient(180deg, #2b1f2f 9.2%, #5a3555 103.9%); /* pink-ish */
+  position:relative;cursor:pointer;
+  transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.pt-card:hover{ border-color:#d872b2; transform:none !important; box-shadow:0 4px 12px rgba(216,114,178,.35); }
+
+.pt-icon{ background:transparent;width:65px;height:65px;margin:0 0 .35rem 0;border-radius:50%;display:flex;align-items:center;justify-content:center; }
+.pt-icon img{ width:110px;height:95px;object-fit:contain; }
+
+.pt-info{ display:flex;flex-direction:column;align-items:center;gap:.25rem; }
+.pt-info h4{ font:600 .85rem/1.2 'Lexend Deca',sans-serif;margin:0; }
+
+.pt-rating{ font-size:.8rem;color:#ffd700;letter-spacing:.05rem;margin-top:-.25rem; }
+.pt-payout{ font-weight:600;font-size:.8rem;color:#fdcb6e;background:rgba(253,203,110,.15);border:1px solid rgba(253,203,110,.3);padding:.15rem .45rem;border-radius:8px;margin-top:0; }
+
+/* Locked state overlay (same vibe as TR) */
+.pt-card.is-locked { filter: grayscale(0.3) opacity(0.9); }
+.pt-card.is-locked::after{
+  content:"\f023"; /* fa-lock */
+  font-family:"Font Awesome 6 Free"; font-weight:900;
+  position:absolute; top:1px; right:8px;
+  background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.25);
+  width:26px;height:26px;border-radius:8px; display:flex;align-items:center;justify-content:center;
+}
+.pt-lock-msg{
+  position:absolute; left:6px; right:6px; bottom:6px;
+  background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.25);
+  color:#fff; font-size:.72rem; padding:.25rem .35rem; border-radius:.5rem;
+}
+.pt-card .pt-lock-msg { display: none !important; }
+@media(max-width:480px){
+  .pt-card{ width:7.5rem;min-width:7.5rem;padding:.4rem; }
+  .pt-icon{ width:60px;height:60px;margin-bottom:.25rem; }
+  .pt-icon img{ width:100px;height:80px; }
+  .pt-rating{ font-size:.7rem; }
+  .pt-payout{ font-size:.75rem;padding:.1rem .35rem; }
+  .pt-lock-msg{ font-size:.68rem; }
+}
+
+
+/* Quick mobile scroll fix */
+@media (max-width: 768px) {
+    /* Force smooth scrolling on mobile */
+    html {
+        scroll-behavior: auto !important;
+    }
+    
+    .main-content {
+         height: calc(100vh - 100px) !important;
+        scroll-behavior: auto !important;
+        -webkit-overflow-scrolling: auto !important; /* Changed from touch */
+        overflow-y: scroll !important;
+        overscroll-behavior: none !important;
+    }
+    
+
+.offer-section:last-child {
+    padding-bottom: 6rem !important;
+}
+    /* Disable any transforms that might cause issues */
+    .offer-section {
+        transform: none !important;
+        will-change: auto !important;
+    }
+}
+/* BitLabs locked UI (same vibe as TR lock) */
+.offer-card-bitlab.is-locked { 
+  filter: grayscale(.3) opacity(.9); 
+  position: relative;
+}
+.offer-card-bitlab.is-locked::after{
+  content:"\f023"; /* fa-lock */
+  font-family:"Font Awesome 6 Free"; font-weight:900;
+  position:absolute; top:8px; right:8px;
+  background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.25);
+  width:26px;height:26px;border-radius:8px; display:flex;align-items:center;justify-content:center;
+}
+.offer-card-bitlab .lock-msg{
+  position:absolute; left:8px; right:8px; bottom:8px;
+  background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.25);
+  color:#fff; font-size:.72rem; padding:.25rem .35rem; border-radius:.5rem;
+}
+.offer-card-bitlab .lock-msg { display:none !important; }
+.offer-card-lootably {
+  background-image: linear-gradient(180deg, #212134 9.2%, #3c4d85 103.9%);
+}
+.offer-card-vortexwall {
+  background-image: linear-gradient(180deg, #1f202f 9.2%, #2a4950 103.9%);
+}
+/* MyChip locked UI */
+.offer-card-mychip.is-locked { 
+  filter: grayscale(.3) opacity(.9); 
+  position: relative;
+}
+.offer-card-mychip.is-locked::after{
+  content:"\f023"; /* fa-lock */
+  font-family:"Font Awesome 6 Free"; font-weight:900;
+  position:absolute; top:8px; right:8px;
+  background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.25);
+  width:26px;height:26px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+}
+
+
+/* ==== PWA Install Button + Prompt Styling (matches your theme) ==== */
+/* Floating install button */
+.pwa-install-button {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #6c63ff, #00bcd4);
+  color: #fff;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 14px;
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+.pwa-install-button svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.2;
+}
+.pwa-install-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+}
+
+/* Overlay */
+.pwa-prompt-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+}
+
+/* Prompt container */
+.pwa-prompt-container {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #1a1d24, #2a2d47);
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  width: 90%;
+  max-width: 360px;
+  z-index: 10001;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  font-family: 'Lexend Deca', sans-serif;
+  padding: 1.8rem 1.5rem;
+}
+
+/* Close button */
+.pwa-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.pwa-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Icon + text */
+.pwa-prompt-icon {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+}
+.pwa-prompt-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.pwa-prompt-description {
+  font-size: 0.95rem;
+  color: #dcdcdc;
+  margin-bottom: 1.4rem;
+  line-height: 1.4;
+}
+
+/* Buttons */
+.pwa-prompt-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
+.pwa-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+.pwa-btn-install {
+  background: linear-gradient(135deg, #6c63ff, #00bcd4);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 206, 201, 0.3);
+}
+.pwa-btn-install:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 206, 201, 0.45);
+}
+.pwa-btn-cancel {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.pwa-btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Error message */
+.pwa-error-message {
+  margin-top: 1rem;
+  color: #ff6666;
+  font-size: 0.85rem;
+  display: none;
+}
+
+/* Hide everything initially */
+#pwaInstallPrompt {
+  display: none;
+}
+
+
+    </style>
+    
+</head>
+
+<body>
+    <!-- Keep all existing sidebar and header -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/newsidebar.css">
+    
+    <div class="sidebar" id="sidebar">
+        <div class="profile-sectionsidebar">
+        <div class="avatar-container">
+            <img src="https://api.dicebear.com/9.x/adventurer-neutral/svg?seed&#x3D;Ryan" alt="Profile Avatar" class="avatar">
+        </div>
+        <div class="profile-info">
+            <div class="profile-tagline">Welcome back 👋</div>
+        </div>
+            <div class="back-button" onclick="toggleSidebar()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="white" />
+                </svg>
+            </div>
+        </div>
+    
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="/home">
+                        <div class="icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/wallet">
+                        <div class="icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <span>Wallet</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/trend">
+                        <div class="icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <span>Trending</span>
+                    </a>
+                </li>
+               
+                <li>
+                    <a href="/leaderboard">
+                        <div class="icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <span>Leaderboard</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="/dailymission">
+                        <div class="icon">
+                            <i class="fas fa-list-check"></i>
+                        </div>
+                        <span>Daily Mission</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/share">
+                        <div class="icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <span>Invite & Earn</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile">
+                        <div class="icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <span>Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <header>
+        <div class="nav">
+            <div class="hamburger-menu" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="header-title">
+                Earn
+            </div>
+            <div class="coin-balance">
+                <img src="https://gamexapp.b-cdn.net/images/coin_image.png" alt="coins" class="coin-logo">
+                <span class="coin-count">11</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="main-content">
+      <!-- Updated Surveys Section -->
+<div class="offer-section">
+    <h2>📝 Surveys</h2>
+    <div class="offer-container" id="surveys-container">
+        <!-- Dynamic Survey Cards will be loaded here -->
+        <div id="dynamic-surveys-container">
+            <!-- Loading placeholder -->
+            <div class="survey-card" style="opacity: 0.6;">
+                <div class="survey-icon">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <div class="survey-info">
+                    <h4>Loading...</h4>
+                    <p class="survey-time">Please wait</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <!-- Keep all your existing sections -->
+      
+  <div class="offer-section">
+    <div class="section-header">
+      <h2>🚀 Featured Offers</h2>
+      <div class="section-controls">
+        <button class="view-all-btn" onclick="openAllOffersModal()">
+          View All
+<i class="fas fa-angle-double-up"></i>
+
+        </button>
+        <button class="nav-arrow nav-arrow-left" id="featured-prev" onclick="scrollFeaturedOffers('left')">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-arrow nav-arrow-right" id="featured-next" onclick="scrollFeaturedOffers('right')">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+    <div class="offer-container" id="featured-offers-container">
+      <div class="featured-loading">
+        <div class="loading-spinner"></div>
+        <p>Loading offers...</p>
+      </div>
+    </div>
+  </div>
+
+<!-- 🎯 Daily Exclusives Section -->
+
+
+
+        <!-- Offerwalls Section -->
+    <div class="offer-section">
+  <h2>🔥 Offerwalls</h2>
+  <div class="offer-container">
+
+<a class="offer-card-mychip"
+   style="order: 1"
+   href="https://sdk.mychips.io/content?content_id=642625fe-8e5b-4e78-b8dc-699492a2442e&user_id=0o42fzpn"
+   target="_self" rel="noopener">
+  <img src="https://maf.ad/wp-content/uploads/2024/05/mychips-logo-colored-dark-straight.png"
+       alt="Ayet Studios" class="offer-logo"
+       onerror="this.src='https://via.placeholder.com/100x60?text=Ayet'">
+  <h3>MyChips</h3>
+  <div class="rating">
+    <span class="star filled">★</span><span class="star filled">★</span>
+    <span class="star filled">★</span><span class="star">★</span><span class="star">★</span>
+  </div>
+</a>
+
+
+
+<a class="offer-card-ayet"
+   style="order: 2"
+   href="https://offerwall.ayet.io/offers?adSlot=21377&externalIdentifier=0o42fzpn"
+   target="_self" rel="noopener">
+  <img src="https://cashdoze.b-cdn.net/images/ayetstudios-logo_big-1.webp"
+       alt="Ayet Studios" class="offer-logo"
+       onerror="this.src='https://via.placeholder.com/100x60?text=Ayet'">
+  <h3>Ayet Studios</h3>
+  <div class="rating">
+    <span class="star filled">★</span><span class="star filled">★</span>
+    <span class="star filled">★</span><span class="star">★</span><span class="star">★</span>
+  </div>
+</a>
+
+
+
+
+
+
+
+
+    <a class="offer-card-timewall"
+       style="order: 5"
+       href="https://timewall.io/users/login?oid=7afff2771683cdc3&uid=0o42fzpn&tab=clicks" target="_self">
+      <img src="https://cashdoze.b-cdn.net/images/timewallold.jpg" alt="TimeWall" class="offer-logo">
+      <h3>TimeWall</h3>
+      <div class="rating">
+        <span class="star filled">★</span><span class="star filled">★</span>
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+    </a>
+
+    <a class="offer-card-pubscale"
+       style="order: 6"
+       href="https://wow.pubscale.com/?app_id=28594254&user_id=0o42fzpn" target="_self">
+      <img src="https://cashdoze.b-cdn.net/images/PubScale.png" alt="PubScale" class="offer-logo">
+      <h3>PubScale</h3>
+      <div class="rating">
+        <span class="star filled">★</span><span class="star filled">★</span>
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+    </a>
+
+
+  </div>
+</div>
+
+
+    </div>
+    <!-- FULL SCREEN All Offers Modal -->
+    <div id="all-offers-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>All Featured Offers</h2>
+                <button class="close-modal" onclick="closeAllOffersModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="filter-section">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">
+                        <i class="fas fa-th-large"></i> All
+                    </button>
+                    <button class="filter-tab" data-filter="android">
+                        <i class="fab fa-android"></i> Android
+                    </button>
+                    <button class="filter-tab" data-filter="ios">
+                        <i class="fab fa-apple"></i> iOS
+                    </button>
+                    <button class="filter-tab" data-filter="web">
+                        <i class="fas fa-globe"></i> Web
+                    </button>
+                </div>
+            </div>
+            <div class="modal-offers-container" id="modal-offers-container">
+                <div class="modal-loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading all offers...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+  
+<!-- PWA Install Button and Popup -->
+<button id="pwaManualInstallBtn" class="pwa-install-button">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m0 0l-4-4m4 4l4-4" />
+  </svg>
+  Install App
+</button>
+
+<div id="pwaInstallPrompt">
+  <div class="pwa-prompt-overlay"></div>
+  <div class="pwa-prompt-container">
+    <button class="pwa-close-btn" id="pwaCloseBtn" aria-label="Close">&times;</button>
+    <div class="pwa-prompt-content">
+      <img src="https://gamexapp.b-cdn.net/images/cashdoze.png" alt="CashDoze" class="pwa-prompt-icon">
+      <h3 class="pwa-prompt-title">Install CashDoze</h3>
+      <p class="pwa-prompt-description">
+        Install to get native app experience!
+      </p>
+      <div class="pwa-prompt-buttons">
+        <button id="pwaInstallBtn" class="pwa-btn pwa-btn-install">Install App</button>
+        <button id="pwaCancelBtn" class="pwa-btn pwa-btn-cancel">Maybe Later</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Bottombar starts here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/bottombar.css">
+    
+    <!-- Bottom Navbar -->
+    <nav class="bottom-navbar">
+      <a href="/home"        class="nav-item ">
+        <i class="fas fa-home"></i><span>Home</span>
+      </a>
+      <a href="/wallet"    class="nav-item ">
+        <i class="fas fa-wallet"></i><span>Wallet</span>
+      </a>
+      <a href="/trend" class="nav-item ">
+        <i class="fas fa-fire"></i><span>Trend</span>
+      </a>
+      <a href="/share"  class="nav-item ">
+        <i class="fas fa-gift"></i><span>Share</span>
+      </a>
+      <a href="/profile" class="nav-item ">
+        <i class="fas fa-user"></i><span>Profile</span>
+      </a>
+    </nav>
+    
+    
+    <!-- Bottombar ends here -->
+
+    <!-- JavaScript -->
+<script>
+window.currentUserUid = '0o42fzpn';
+window.showFeaturedOffers = true;
+window.userCountry = 'IN';
+window.userPlatform = 'android';
+
+window.trUnlocked = false;
+window.trLockReason = "Coming Soon";
+window.trUrl = "http://cashdoze.com/api/trsurvey?uid&#x3D;0o42fzpn";
+window.ptUnlocked = true;
+window.ptLockReason = "";
+window.ptUrl = "https://surveys.ayet.io/?adSlot&#x3D;22464&amp;external_identifier&#x3D;0o42fzpn";
+window.pfUnlocked = true;
+window.pfLockReason = "";
+</script>
+
+<script>
+// normalize advertiser key and build a correct direct URL with UID added
+function buildDirectUrl(adv, link, uid) {
+  if (!link || link === '#') return '#';
+  const advKey = String(adv || '').toLowerCase().trim();
+  let u;
+  try { u = new URL(link); } catch { u = new URL(link, window.location.origin); }
+
+  if (advKey === 'bitlab') {
+    if (!u.searchParams.has('sub_aff_id')) u.searchParams.set('sub_aff_id', uid);
+  } else if (advKey === 'ayet') {
+    // Prefer standard ayet param; if already present, don't duplicate.
+    if (!u.searchParams.has('sub_aff_id') && !u.searchParams.has('sub_aff_id')) {
+      u.searchParams.set('sub_aff_id', uid);
+    }
+  }
+  return u.toString();
+}
+</script>
+
+<script>
+
+
+function getCpxCardHtml(uid){
+  const url = `https://offers.cpx-research.com/index.php?app_id=27558&ext_user_id=${uid}`;
+
+  return `
+    <a  class="cpx-card" href="${url}" target="_self" rel="noopener">
+
+      <div class="cpx-icon">
+        <img src="https://cashdoze.b-cdn.net/images/cpx.png" alt="CPX">
+      </div>
+
+      <div class="cpx-info">
+        <h4>CPX Surveys</h4>
+
+        <div class="cpx-rating">
+          ★★★★★
+        </div>
+
+        <div class="cpx-payout">
+          Survey Router
+        </div>
+      </div>
+    </a>`;
+}
+
+function getTrCardHtml(uid){
+  const href = (window.trUrl && typeof window.trUrl === 'string')
+    ? window.trUrl
+    : `http://cashdoze.com/api/trsurvey?uid=${encodeURIComponent(uid)}`;
+
+  const locked = (window.trUnlocked === false); // true when locked
+  const logo = 'https://cashdoze.b-cdn.net/images/theoremcd.png';
+
+  return `
+    <a class="tr-card ${locked ? 'is-locked' : ''}"
+       href="${locked ? '#' : href}"
+       data-locked="${locked ? 'true' : 'false'}"
+       rel="noopener" target="_self">
+      <div class="tr-icon">
+        <img src="${logo}" alt="TheoremReach" onerror="this.style.opacity=0">
+      </div>
+      <div class="tr-info">
+        <h4>TheoremReach</h4>
+        <div class="tr-rating">★★★★★</div>
+        <div class="tr-payout">Survey Router</div>
+      </div>
+      ${locked ? `<div class="tr-lock-msg">${window.trLockReason || 'Locked'}</div>` : ''}
+    </a>`;
+}
+
+function getPolltasticCardHtml(uid){
+  const href = (window.ptUrl && typeof window.ptUrl === 'string')
+    ? window.ptUrl
+    : `https://surveys.ayet.io/?adSlot=22464&external_identifier=${encodeURIComponent(uid)}`;
+
+  const locked = (window.ptUnlocked === false);
+  const logo = 'https://cashdoze.b-cdn.net/images/Inverted_polltastic.webp';
+
+  return `
+    <a class="pt-card ${locked ? 'is-locked' : ''}"
+       href="${locked ? '#' : href}"
+       data-locked="${locked ? 'true' : 'false'}"
+       rel="noopener" target="_self">
+      <div class="pt-icon">
+        <img src="${logo}" alt="PollTastic" onerror="this.style.opacity=0">
+      </div>
+      <div class="pt-info">
+        <h4>Poll Tastic</h4>
+        <div class="pt-rating">★★★★</div>
+        <div class="pt-payout">Survey Router</div>
+      </div>
+      ${locked ? `<div class="pt-lock-msg">${window.ptLockReason || 'Locked'}</div>` : ''}
+    </a>`;
+}
+
+// block navigation when locked (single global handler)
+document.addEventListener('click', (e) => {
+  const tr = e.target.closest('.tr-card');
+  if (tr && tr.dataset.locked === 'true') {
+    e.preventDefault();
+    alert(window.trLockReason || 'Locked');
+    return;
+  }
+  const pt = e.target.closest('.pt-card');
+  if (pt && pt.dataset.locked === 'true') {
+    e.preventDefault();
+    alert(window.ptLockReason || 'Locked');
+  }
+}, { passive:false });
+
+
+class SurveyManager {
+  constructor () {
+    this.userUid = window.currentUserUid;
+    this.init();
+  }
+
+  showCPXMainCard () {
+    const container = document.getElementById('dynamic-surveys-container');
+    container.innerHTML =
+      getCpxCardHtml(this.userUid) +
+      //getTrCardHtml(this.userUid) +
+      getPolltasticCardHtml(this.userUid);
+  }
+
+  async init () {
+    await this.loadSurveys();        
+  }
+
+  async loadSurveys () {
+    const container = document.getElementById('dynamic-surveys-container');
+    showSurveySkeletons(10);  
+
+    try {
+      const resp  = await fetch(`/api/cpx-surveys/${this.userUid}`);
+      const data  = await resp.json();
+
+      if (data.success && Array.isArray(data.surveys) && data.surveys.length) {
+        const sorted = data.surveys.sort(
+          (a, b) => (b.rating_count || 0) - (a.rating_count || 0)
+        );
+        this.renderSurveys(sorted);
+      } else {
+        this.showCPXMainCard();
+      }
+    } catch (err) {
+      console.error('Error loading surveys:', err);
+      this.showCPXMainCard();
+    }
+  }
+
+  generateStars (rating = 4.5, ratingCount = 0) {
+    const full = Math.floor(rating);
+    const stars = Array.from({length:5}, (_,i) =>
+      i < full
+        ? '<span class="star filled">★</span>'
+        : '<span class="star">★</span>'
+    ).join('');
+    const countTxt = ratingCount ? `(${ratingCount})` : '';
+    return `<div class="survey-rating"><div class="stars">${stars}</div>${countTxt}</div>`;
+  }
+
+  renderSurveys (surveys) {
+    const container = document.getElementById('dynamic-surveys-container');
+    const maxSurveys   = 12;
+    const surveysToShow = surveys.slice(0, maxSurveys);
+
+    const surveyHTML = surveysToShow.map((survey, idx) => {
+      const title   = survey.title?.trim()
+                    ? (survey.title.length > 15
+                        ? survey.title.slice(0,15) + '…'
+                        : survey.title)
+                    : `Survey ${idx+1}`;
+
+      return `
+        <a class="survey-card"
+           href="${survey.href_new || '#'}"
+           target="_self"
+           rel="noopener"
+           style="animation-delay:${idx*0.1}s"
+           title="${title}">
+          <div class="survey-icon"><i class="fas fa-clipboard-list"></i></div>
+
+          <div class="survey-info">
+            <h4>${title}</h4>
+
+            <div class="survey-meta">
+              ${this.generateStars(+survey.rating, +survey.rating_count || 0)}
+              <div class="survey-payout">
+                <img src="https://gamexapp.b-cdn.net/images/coin_image.png"
+                     class="coin-icon" alt="coin">
+                <span>${Math.round(+survey.payout || 100)}</span>
+              </div>
+            </div>
+
+            <p class="survey-time"><i class="fas fa-stopwatch" style="margin-right: 4px;"></i>${survey.loi || 5}&nbsp;min</p>
+          </div>
+        </a>`;
+    }).join('');
+
+    container.innerHTML =
+      getCpxCardHtml(this.userUid) +
+      //getTrCardHtml(this.userUid) +
+      getPolltasticCardHtml(this.userUid) +
+      surveyHTML;
+
+    container.querySelectorAll('.survey-card').forEach((card,i)=>{
+      setTimeout(()=>{card.style.opacity='1';card.style.transform='translateY(0)';}, i*100);
+    });
+  }
+}
+
+
+// Auto-refresh surveys every 10 minutes
+setInterval(() => {
+  if (window.surveyManager) {
+    window.surveyManager.loadSurveys();
+  }
+}, 600000);
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize sidebar
+  initSidebarAutoHide();
+  
+  // Initialize survey manager
+  if (window.currentUserUid) {
+    window.surveyManager = new SurveyManager();
+  }
+});
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('active');
+  document.body.classList.toggle('sidebar-active');
+}
+
+function showSkeletons(count = 10) {
+  const html = Array(count).fill(`
+    <div class="featured-offer-card skeleton" style="width:8.5rem; height:10rem; margin:0 2px; border-radius:1rem;"></div>
+  `).join("");
+  document.getElementById("featured-offers-container").innerHTML = html;
+}
+
+function showSurveySkeletons(count = 10){
+  const html = Array(count).fill('<div class="survey-skeleton"></div>').join('');
+  document.getElementById('dynamic-surveys-container').innerHTML = html;
+}
+
+function initSidebarAutoHide() {
+  const sidebar = document.getElementById('sidebar');
+  
+  document.addEventListener('click', function(event) {
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    
+    if (sidebar && sidebar.classList.contains('active')) {
+      if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+        sidebar.classList.remove('active');
+        document.body.classList.remove('sidebar-active');
+      }
+    }
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && sidebar && sidebar.classList.contains('active')) {
+      sidebar.classList.remove('active');
+      document.body.classList.remove('sidebar-active');
+    }
+  });
+
+  if (sidebar) {
+    const sidebarLinks = sidebar.querySelectorAll('a');
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        document.body.classList.remove('sidebar-active');
+      });
+    });
+  }
+}
+
+// Enhanced Featured Offers Functionality
+class FeaturedOffers {
+  constructor() {
+    this.container = document.getElementById('featured-offers-container');
+    this.apiUrl = '/apinew/featured-offers';
+    this.allOffers = [];
+    this.currentFilter = 'all';
+    this.userPlatform = window.userPlatform || 'web';
+    this.isDesktop = this.userPlatform === 'web';
+    this.init();
+  }
+
+  showSkeletons(count = 10) {
+    const html = Array(count).fill(
+      `<div class="featured-offer-card skeleton"></div>`
+    ).join("");
+    this.container.innerHTML = html;
+  }
+
+  async init() {
+    await this.loadFeaturedOffers();
+    this.bindEvents();
+    this.initializeNavigation();
+  }
+
+  async loadFeaturedOffers() {
+    try {
+      this.showSkeletons(10);
+
+      const response = await fetch(this.apiUrl, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.success && data.offers && data.offers.length > 0) {
+        this.allOffers = data.offers;
+        
+        // Filter offers for homepage based on platform
+        const homepageOffers = this.filterOffersForHomepage(data.offers);
+        
+        this.renderOffers(homepageOffers);
+        this.updateNavigationButtons();
+      } else {
+        this.showEmpty();
+      }
+    } catch (error) {
+      console.error('Error loading featured offers:', error);
+      this.showError();
+    }
+  }
+
+  // FIXED: Homepage filtering logic
+  filterOffersForHomepage(offers) {
+    console.log('Filtering offers for homepage. Platform:', this.userPlatform);
+    
+    // If desktop/web, show ALL offers (no filtering)
+    if (this.isDesktop) {
+      console.log('Desktop detected - showing all offers');
+      return offers;
+    }
+
+    // For mobile devices, show platform-specific + web offers
+    const filteredOffers = offers.filter(offer => {
+      const platform = String(offer.platform || offer.device_targeting || 'both').toLowerCase();
+      console.log('Checking offer platform:', platform, 'for user platform:', this.userPlatform);
+      
+      // Always include web offers for mobile users (since it's web accessible)
+      if (platform.includes('web') || platform.includes('browser') || platform.includes('desktop')) {
+        return true;
+      }
+      
+      // Always include both/all platform offers
+      if (platform === 'both' || platform === 'all' || platform.includes('cross-platform')) {
+        return true;
+      }
+      
+      // Include platform-specific offers
+      switch(this.userPlatform) {
+        case 'android':
+          return platform.includes('android');
+        case 'ios':
+          return platform.includes('ios') || platform.includes('iphone') || platform.includes('ipad');
+        default:
+          return false;
+      }
+    });
+    
+    console.log('Filtered offers count:', filteredOffers.length);
+    return filteredOffers;
+  }
+
+  showLoading() {
+    this.container.innerHTML = `
+      <div class="featured-loading">
+        <div class="loading-spinner"></div>
+        <p>Loading offers...</p>
+      </div>
+    `;
+  }
+
+  showError() {
+    this.container.innerHTML = `
+      <div class="featured-error">
+        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem; color: #e74c3c;"></i>
+        <p>Failed to load offers</p>
+        <button class="retry-button" onclick="featuredOffers.loadFeaturedOffers()">
+          <i class="fas fa-redo"></i> Retry
+        </button>
+      </div>
+    `;
+  }
+
+  showEmpty() {
+    this.container.innerHTML = `
+      <div class="featured-empty">
+        <i class="fas fa-inbox" style="font-size: 2rem; margin-bottom: 1rem; color: #95a5a6;"></i>
+        <p>No featured offers available</p>
+      </div>
+    `;
+  }
+
+  renderOffers(offers) {
+    const offersHTML = offers.map((offer, index) => {
+      const card = this.createOfferCard(offer);
+      // FIX: match the <a ...> tag, not <div ...>
+      return card.replace(
+        '<a class="featured-offer-card"',
+        `<a class="featured-offer-card" style="animation-delay: ${index * 0.1}s"`
+      );
+    }).join('');
+    this.container.innerHTML = offersHTML;
+  }
+
+  createOfferCard(offer) {
+    // 1) Clean up the offer name
+    let name = offer.name || offer.title || 'Special Offer';
+    const phrasesToRemove = [
+      /register\s+and\s+earn/gi,
+      /sign\s+up\s+and\s+earn/gi,
+      /download\s+and\s+earn/gi,
+      /install\s+and\s+earn/gi,
+      /complete\s+and\s+earn/gi,
+      /\s*-\s*register.*$/gi,
+      /\s*-\s*sign\s+up.*$/gi,
+      /\s*-\s*download.*$/gi,
+      /\s*-\s*install.*$/gi,
+      /register\s+and\s+open/gi,
+      /open\s+and\s+earn/gi,
+      /complete\s+level\s*\d*/gi,
+      /reach\s+level\s*\d*/gi,
+      /level\s*\d+/gi,
+      /complete\s+tasks?/gi,
+      /finish\s+tutorial/gi,
+      /tutorial/gi,
+      /register/gi,
+      /sign\s*up/gi,
+      /complete/gi,
+      /reach/gi,
+      /level/gi,
+      /tasks?/gi,
+      /earn/gi,
+      /install/gi,
+      /download/gi,
+      /open/gi,
+      /use/gi,
+      /play/gi,
+      /\s*-\s*.*earn.*$/gi,
+      /\s*-\s*.*complete.*$/gi,
+      /\s*-\s*.*level.*$/gi
+    ];
+    phrasesToRemove.forEach(rx => name = name.replace(rx, ''));
+    name = name.replace(/\s+/g, ' ').replace(/^\.|\.$/g, '').replace(/^-+|-+$/g, '').trim();
+    if (!name || name.length < 2) name = 'Special Offer';
+
+    // 2) Grab image, raw tracking link, payout & adv tag
+    const image  = offer.image    || offer.logo || 'https://via.placeholder.com/100x60?text=Offer';
+    const link   = offer.link     || offer.url  || offer.tracking_url || '#';
+    const payout = offer.payout   || 0;
+    const adv    = (offer.adv || '').toLowerCase().trim();
+    const id     = offer.id       || offer.offerId;
+
+    // ↓ NEW: direct-link advertisers
+    const isDirectAdv = adv === 'bitlab' || adv === 'ayet';
+    const href = (isDirectAdv && link !== '#')
+      ? buildDirectUrl(adv, link, window.currentUserUid)
+      : `/offer-detail/${id}`;
+
+    const platform = (offer.platform || offer.device_targeting || 'both').toLowerCase();
+    let platformBadge;
+    if (platform.includes('android')) {
+      platformBadge = '<div class="platform-badge android"><i class="fab fa-android"></i></div>';
+    } else if (platform.includes('ios') || platform.includes('iphone')) {
+      platformBadge = '<div class="platform-badge ios"><i class="fab fa-apple"></i></div>';
+    } else if (platform.includes('web') || platform.includes('desktop')) {
+      platformBadge = '<div class="platform-badge web"><i class="fas fa-globe"></i></div>';
+    } else {
+      platformBadge = '<div class="platform-badge both"><i class="fas fa-mobile-alt"></i></div>';
+    }
+
+    // 5) Return the <a> card
+    return `
+      <a
+        class="featured-offer-card"
+        href="${href}"
+        target="_self"
+        rel="noopener"
+        title="${name}"
+        data-offer-id="${id}"
+        data-offer-link="${link}"
+        data-offer-adv="${adv}"
+      >
+        ${platformBadge}
+        <img src="${image}" alt="${name}" class="featured-offer-image"
+             onerror="this.src='https://via.placeholder.com/100x60?text=Offer'"/>
+        <h4 class="featured-offer-name">${name}</h4>
+        <div class="featured-offer-payout">
+          <img src="https://gamexapp.b-cdn.net/images/coin_image.png" alt="coin" class="coin-icon"/>
+          <span>${payout}</span>
+        </div>
+      </a>
+    `;
+  }
+
+  createPlatformBadge(platform) {
+    const normalizedPlatform = String(platform).toLowerCase();
+    
+    if (normalizedPlatform.includes('android') || normalizedPlatform === 'android') {
+      return '<div class="platform-badge android"><i class="fab fa-android android-icon"></i></div>';
+    } 
+    else if (normalizedPlatform.includes('ios') || normalizedPlatform === 'ios' || 
+             normalizedPlatform.includes('iphone') || normalizedPlatform.includes('ipad')) {
+      return '<div class="platform-badge ios"><i class="fab fa-apple"></i></div>';
+    } 
+    else if (normalizedPlatform.includes('web') || normalizedPlatform.includes('browser') || 
+             normalizedPlatform.includes('desktop')) {
+      return '<div class="platform-badge web"><i class="fas fa-globe"></i></div>';
+    }
+    else if (normalizedPlatform === 'both' || normalizedPlatform === 'all' || 
+             normalizedPlatform.includes('cross-platform') || normalizedPlatform.includes('universal')) {
+      return '<div class="platform-badge both"><i class="fas fa-mobile-alt"></i></div>';
+    } 
+    else {
+      return '<div class="platform-badge both"><i class="fas fa-mobile-alt"></i></div>';
+    }
+  }
+
+  initializeNavigation() {
+    this.updateNavigationButtons();
+  }
+
+  updateNavigationButtons() {
+    const prevBtn = document.getElementById('featured-prev');
+    const nextBtn = document.getElementById('featured-next');
+    
+    if (!this.container || !prevBtn || !nextBtn) return;
+
+    const scrollLeft = this.container.scrollLeft;
+    const maxScroll = this.container.scrollWidth - this.container.clientWidth;
+
+    prevBtn.disabled = scrollLeft <= 0;
+    nextBtn.disabled = scrollLeft >= maxScroll;
+  }
+
+  // Enhanced click handling
+  bindEvents() {
+    // Click event handling
+    this.container.addEventListener('click', (e) => {
+      const offerCard = e.target.closest('.featured-offer-card');
+      if (offerCard) {
+        this.handleOfferClick(offerCard, e);
+      }
+    });
+
+    // Middle-click handling
+    this.container.addEventListener('auxclick', (e) => {
+      if (e.button === 1) { // Middle-click
+        const offerCard = e.target.closest('.featured-offer-card');
+        if (offerCard) {
+          this.handleOfferClick(offerCard, e, true);
+        }
+      }
+    });
+
+    // Allow context menu for right-click
+    this.container.addEventListener('contextmenu', (e) => {
+      e.stopPropagation();
+    });
+
+    this.container.addEventListener('scroll', () => {
+      this.updateNavigationButtons();
+    });
+  }
+
+  // Enhanced offer click handling (direct only; otherwise let anchor default)
+  handleOfferClick(offerCard, e, forceNewTab = false) {
+    const adv = (offerCard.getAttribute('data-offer-adv') || '').toLowerCase().trim();
+    if (adv !== 'bitlab' && adv !== 'ayet') {
+      // non-direct: let the anchor navigate to /offer-detail/:id
+      return;
+    }
+
+    e.preventDefault(); // avoid double navigation for direct-link flows
+
+    const link = offerCard.getAttribute('data-offer-link') || '#';
+    const finalUrl = buildDirectUrl(adv, link, window.currentUserUid);
+    const shouldOpenNewTab = forceNewTab || e.ctrlKey || e.metaKey || e.button === 1;
+
+    if (shouldOpenNewTab) {
+      window.open(finalUrl, '_blank');
+    } else {
+      window.location.href = finalUrl;
+    }
+  }
+
+  refresh() {
+    this.loadFeaturedOffers();
+  }
+
+  getAllOffers() {
+    return this.allOffers;
+  }
+
+  // FIXED: Modal filtering - Show all offers in modal always
+  filterOffers(filter) {
+    this.currentFilter = filter;
+    let filteredOffers = this.allOffers;
+
+    if (filter !== 'all') {
+      filteredOffers = this.allOffers.filter(offer => {
+        const platform = String(offer.platform || offer.device_targeting || 'both').toLowerCase();
+        
+        switch(filter) {
+          case 'android':
+            return platform.includes('android') || platform === 'both' || platform === 'all';
+          case 'ios':
+            return platform.includes('ios') || platform.includes('iphone') || 
+                   platform.includes('ipad') || platform === 'both' || platform === 'all';
+          case 'web':
+            return platform.includes('web') || platform.includes('browser') || 
+                   platform.includes('desktop') || platform === 'both' || platform === 'all';
+          default:
+            return true;
+        }
+      });
+    }
+
+    console.log('Modal filter:', filter, 'Filtered count:', filteredOffers.length);
+    return filteredOffers;
+  }
+}
+
+// Enhanced scroll function with slower, controlled scrolling
+function scrollFeaturedOffers(direction) {
+  const container = document.getElementById('featured-offers-container');
+  const cardWidth = 140; // Approximate card width + gap
+  const cardsToScroll = 3; // Number of cards to scroll
+  const scrollAmount = cardWidth * cardsToScroll;
+
+  if (direction === 'left') {
+    container.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
+    });
+  } else {
+    container.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+}
+
+function openAllOffersModal() {
+  const modal = document.getElementById('all-offers-modal');
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  
+  // Reset to 'all' filter and load offers
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.classList.remove('active');
+    if (tab.getAttribute('data-filter') === 'all') {
+      tab.classList.add('active');
+    }
+  });
+  
+  loadAllOffers('all');
+}
+
+function closeAllOffersModal() {
+  const modal = document.getElementById('all-offers-modal');
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function loadAllOffers(filter = 'all') {
+  const container = document.getElementById('modal-offers-container');
+  
+  container.innerHTML = `
+    <div class="modal-loading">
+      <div class="loading-spinner"></div>
+      <p>Loading all offers...</p>
+    </div>
+  `;
+
+  setTimeout(() => {
+    if (window.featuredOffers && window.featuredOffers.allOffers.length > 0) {
+      const offers = window.featuredOffers.filterOffers(filter);
+      console.log('Rendering modal offers:', offers.length);
+      renderModalOffers(offers);
+    } else {
+      console.log('No offers available for modal');
+      container.innerHTML = `
+        <div class="modal-error">
+          <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem; color: #e74c3c;"></i>
+          <p>No offers available</p>
+        </div>
+      `;
+    }
+  }, 300);
+}
+
+// Enhanced render modal offers with click handling
+function renderModalOffers(offers) {
+  const container = document.getElementById('modal-offers-container');
+  
+  if (offers.length === 0) {
+    container.innerHTML = `
+      <div class="modal-empty">
+        <i class="fas fa-inbox" style="font-size: 2rem; margin-bottom: 1rem; color: #95a5a6;"></i>
+        <p>No offers found for this filter</p>
+      </div>
+    `;
+    return;
+  }
+
+  const offersHTML = offers.map((offer, index) => {
+    // Clean offer name - remove ALL task-related phrases  
+    let name = offer.name || offer.title || 'Special Offer';
+    const phrasesToRemove = [
+      /register\s+and\s+earn/gi,
+      /sign\s+up\s+and\s+earn/gi,
+      /download\s+and\s+earn/gi,
+      /install\s+and\s+earn/gi,
+      /complete\s+and\s+earn/gi,
+      /\s*-\s*register.*$/gi,
+      /\s*-\s*sign\s+up.*$/gi,
+      /\s*-\s*download.*$/gi,
+      /\s*-\s*install.*$/gi,
+      /register\s+and\s+open/gi,
+      /open\s+and\s+earn/gi,
+      /complete\s+level\s*\d*/gi,
+      /reach\s+level\s*\d*/gi,
+      /level\s*\d+/gi,
+      /complete\s+tasks?/gi,
+      /finish\s+tutorial/gi,
+      /tutorial/gi,
+      /register/gi,
+      /sign\s*up/gi,
+      /complete/gi,
+      /reach/gi,
+      /level/gi,
+      /tasks?/gi,
+      /earn/gi,
+      /install/gi,
+      /download/gi,
+      /open/gi,
+      /use/gi,
+      /play/gi,
+      /\s*-\s*.*earn.*$/gi,
+      /\s*-\s*.*complete.*$/gi,
+      /\s*-\s*.*level.*$/gi
+    ];
+    
+    phrasesToRemove.forEach(phrase => {
+      name = name.replace(phrase, '');
+    });
+    
+    // Clean up extra spaces, dots, and dashes
+    name = name.replace(/\s+/g, ' ').replace(/^\.|\.$/g, '').replace(/^-+|-+$/g, '').trim();
+    if (!name || name.length < 2) name = 'Special Offer';
+    
+    const image = offer.image || offer.imageUrl || offer.logo || 'https://via.placeholder.com/40x40?text=App';
+    const link = offer.link || offer.url || offer.offerLink || offer.tracking_url || '#';
+    const offerId = offer.id || offer.offerId;
+    const payout = offer.payout || 0;
+    const adv = (offer.adv || '').toLowerCase().trim();
+    const platform = offer.platform || offer.device_targeting || 'both';
+
+    const platformBadge = createPlatformBadgeForModal(platform);
+
+    // Determine the final URL for this offer (BitLab & Ayet direct)
+    const isDirectAdv = adv === 'bitlab' || adv === 'ayet';
+    const href = (isDirectAdv && link && link !== '#')
+      ? buildDirectUrl(adv, link, window.currentUserUid)
+      : `/offer-detail/${offerId}`;
+
+    return `
+      <a href="${href}" 
+         target="_self" 
+         rel="noopener" 
+         class="modal-offer-card"
+         data-offer-id="${offerId}" 
+         data-offer-link="${link}"
+         data-offer-name="${name}"
+         data-offer-adv="${adv}"
+         title="${name}"
+         style="animation-delay: ${(index % 10) * 0.05}s">
+          ${platformBadge}
+          <img src="${image}" 
+               alt="${name}" 
+               class="modal-offer-image"
+               onerror="this.src='https://via.placeholder.com/40x40?text=App'"
+               draggable="false">
+          <div class="modal-offer-details" style="display:flex;flex-direction:column;align-items:flex-start;">
+              <div class="modal-offer-content">
+                  <h4 class="modal-offer-name" title="${name}">${name}</h4>
+              </div>
+              <div class="modal-offer-payout">
+                  <img src="https://gamexapp.b-cdn.net/images/coin_image.png" alt="coins" class="coin-icon" draggable="false">
+                  <span>${payout}</span>
+              </div>
+          </div>
+      </a>
+    `;
+  }).join('');
+
+  container.innerHTML = offersHTML;
+}
+
+function createPlatformBadgeForModal(platform) {
+  const normalizedPlatform = String(platform).toLowerCase();
+  
+  if (normalizedPlatform.includes('android') || normalizedPlatform === 'android') {
+    return '<div class="platform-badge android"><i class="fab fa-android android-icon"></i></div>';
+  } 
+  else if (normalizedPlatform.includes('ios') || normalizedPlatform === 'ios' || 
+           normalizedPlatform.includes('iphone') || normalizedPlatform.includes('ipad')) {
+    return '<div class="platform-badge ios"><i class="fab fa-apple"></i></div>';
+  } 
+  else if (normalizedPlatform.includes('web') || normalizedPlatform.includes('browser') || 
+           normalizedPlatform.includes('desktop')) {
+    return '<div class="platform-badge web"><i class="fas fa-globe"></i></div>';
+  }
+  else {
+    return '<div class="platform-badge both"><i class="fas fa-mobile-alt"></i></div>';
+  }
+}
+
+// Enhanced modal offer click handling (kept for parity; not required since <a href> is set)
+function handleModalOfferClick(offerCard, e) {
+  const adv = (offerCard.getAttribute('data-offer-adv') || '').toLowerCase().trim();
+  const link = offerCard.getAttribute('data-offer-link') || '#';
+  const offerId = offerCard.getAttribute('data-offer-id');
+  const isDirectAdv = adv === 'bitlab' || adv === 'ayet';
+  const shouldOpenNewTab = e && (e.ctrlKey || e.metaKey || e.button === 1);
+
+  if (isDirectAdv && link && link !== '#') {
+    e && e.preventDefault();
+    const finalUrl = buildDirectUrl(adv, link, window.currentUserUid);
+    if (shouldOpenNewTab) window.open(finalUrl, '_blank'); 
+    else window.location.href = finalUrl;
+    return;
+  }
+
+  // fallback to detail page
+  const detailUrl = `/offer-detail/${offerId}`;
+  if (shouldOpenNewTab) window.open(detailUrl, '_blank'); 
+  else window.location.href = detailUrl;
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+  initSidebarAutoHide();
+
+  if (window.showFeaturedOffers) {
+    window.featuredOffers = new FeaturedOffers();
+  }
+
+  function activateTab(tab) {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.getAttribute('data-filter');
+    loadAllOffers(filter);
+  }
+
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    // For mobile: touchstart fires instantly, fallback to click for desktop
+    tab.addEventListener('touchstart', function(e) {
+      e.preventDefault(); // Prevent simulated mouse event (double trigger)
+      activateTab(this);
+    }, {passive: false});
+    tab.addEventListener('click', function(e) {
+      activateTab(this);
+    });
+  });
+
+  // Close modal on overlay click
+  document.getElementById('all-offers-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeAllOffersModal();
+    }
+  });
+
+  // Close modal on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeAllOffersModal();
+    }
+  });
+
+  // Enhanced offerwall cards click handling
+  const offerCards = document.querySelectorAll('[class^="offer-card-"]');
+  offerCards.forEach(card => {
+    // Prevent context menu from interfering
+    card.addEventListener('contextmenu', function(e) {
+      // Allow right-click context menu for "Open in new tab"
+      e.stopPropagation();
+    });
+
+    card.addEventListener('click', function(e) {
+      const url = this.getAttribute('data-url');
+      if (url) {
+        if (e.ctrlKey || e.metaKey || e.button === 1) {
+          // Ctrl+Click or Cmd+Click or Middle-click = New tab
+          window.open(url, '_blank');
+        } else {
+          // Normal click = Same tab
+          window.location.href = url;
+        }
+      }
+    });
+
+    // Handle middle-click
+    card.addEventListener('auxclick', function(e) {
+      if (e.button === 1) { // Middle mouse button
+        const url = this.getAttribute('data-url');
+        if (url) {
+          window.open(url, '_blank');
+        }
+      }
+    });
+  });
+
+  // Bottom navbar active state
+  const navItems = document.querySelectorAll('.bottom-navbar .nav-item');
+  const currentPath = window.location.pathname;
+
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    const itemPath = item.getAttribute('href');
+    if (
+      itemPath === currentPath ||
+      (itemPath !== '/' && currentPath.startsWith(itemPath))
+    ) {
+      item.classList.add('active');
+    }
+  });
+
+  navItems.forEach(item => {
+    item.addEventListener('click', function () {
+      navItems.forEach(nav => nav.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+});
+
+// Auto-refresh featured offers every 5 minutes
+setInterval(() => {
+  if (window.featuredOffers) {
+    window.featuredOffers.refresh();
+  }
+}, 300000);
+</script>
+
+
+<script>
+let deferredPrompt;
+const installBtn = document.getElementById('pwaManualInstallBtn');
+const promptContainer = document.getElementById('pwaInstallPrompt');
+const installConfirmBtn = document.getElementById('pwaInstallBtn');
+const cancelBtn = document.getElementById('pwaCancelBtn');
+const closeBtn = document.getElementById('pwaCloseBtn');
+
+console.log('🚀 PWA Install Script Initialized');
+
+// ============================================
+// BROWSER & DEVICE DETECTION
+// ============================================
+function detectBrowserAndDevice() {
+  const userAgent = navigator.userAgent;
+  const platform = navigator.platform;
+  
+  // Detect Browser
+  const isChrome = /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
+  const isEdge = /Edg/.test(userAgent);
+  const isSafari = /Safari/.test(userAgent) && !/Chrome/.test(userAgent);
+  const isFirefox = /Firefox/.test(userAgent);
+  const isOpera = /OPR/.test(userAgent) || /Opera/.test(userAgent);
+  const isSamsung = /SamsungBrowser/.test(userAgent);
+  
+  // Detect Device
+  const isAndroid = /Android/.test(userAgent);
+  const isIOS = /iPhone|iPad|iPod/.test(userAgent);
+  const isWindows = /Win/.test(platform);
+  const isMac = /Mac/.test(platform);
+  const isLinux = /Linux/.test(platform) && !isAndroid;
+  
+  // Detect if running as PWA
+  const isPWA = window.matchMedia('(display-mode: standalone)').matches || 
+                window.navigator.standalone === true ||
+                document.referrer.includes('android-app://');
+  
+  // Log Browser Detection
+  console.log('🌐 BROWSER DETECTION:');
+  console.log(`  ${isChrome ? '✅' : '❌'} Chrome: ${isChrome}`);
+  console.log(`  ${isEdge ? '✅' : '❌'} Edge: ${isEdge}`);
+  console.log(`  ${isSafari ? '✅' : '❌'} Safari: ${isSafari}`);
+  console.log(`  ${isFirefox ? '✅' : '❌'} Firefox: ${isFirefox}`);
+  console.log(`  ${isOpera ? '✅' : '❌'} Opera: ${isOpera}`);
+  console.log(`  ${isSamsung ? '✅' : '❌'} Samsung Internet: ${isSamsung}`);
+  
+  // Log Device/OS Detection
+  console.log('📱 DEVICE/OS DETECTION:');
+  console.log(`  ${isAndroid ? '✅' : '❌'} Android: ${isAndroid}`);
+  console.log(`  ${isIOS ? '✅' : '❌'} iOS: ${isIOS}`);
+  console.log(`  ${isWindows ? '✅' : '❌'} Windows: ${isWindows}`);
+  console.log(`  ${isMac ? '✅' : '❌'} macOS: ${isMac}`);
+  console.log(`  ${isLinux ? '✅' : '❌'} Linux: ${isLinux}`);
+  
+  // Log PWA Status
+  console.log('📲 PWA STATUS:');
+  if (isPWA) {
+    console.log('  ✅ Running as INSTALLED PWA (Standalone Mode)');
+    console.log('  🎉 User is using the app, not browser!');
+  } else {
+    console.log('  ❌ Running in BROWSER (Not installed)');
+    console.log('  🌐 User is browsing the website');
+  }
+  
+  // Special Detection for Android + Chrome
+  if (isAndroid && isChrome) {
+    console.log('🎯 IDEAL SETUP: Android + Chrome detected!');
+    console.log('   ✅ PWA installation is ALLOWED');
+  } else if (isAndroid && !isChrome) {
+    console.warn('⚠️ BLOCKED: Android detected but NOT using Chrome');
+    console.warn('   ❌ PWA install is NOT allowed on this browser');
+  } else if (!isAndroid && isChrome) {
+    console.warn('⚠️ BLOCKED: Chrome detected but NOT on Android');
+    console.warn('   ❌ PWA install is only allowed on Android + Chrome');
+  } else {
+    console.warn('⚠️ BLOCKED: Neither Android nor Chrome detected');
+    console.warn('   ❌ PWA install requires Android + Chrome');
+  }
+  
+  // Display mode details
+  console.log('🖥️ DISPLAY MODE:');
+  console.log(`  Current: ${window.matchMedia('(display-mode: standalone)').matches ? 'Standalone (PWA)' : 'Browser'}`);
+  console.log(`  User Agent: ${userAgent.substring(0, 100)}...`);
+  
+  return {
+    browser: {
+      isChrome,
+      isEdge,
+      isSafari,
+      isFirefox,
+      isOpera,
+      isSamsung
+    },
+    device: {
+      isAndroid,
+      isIOS,
+      isWindows,
+      isMac,
+      isLinux
+    },
+    isPWA,
+    isAllowedToInstall: isAndroid && isChrome // Only Android + Chrome allowed
+  };
+}
+
+// Run detection
+const deviceInfo = detectBrowserAndDevice();
+
+// ============================================
+// PWA REQUIREMENTS CHECK
+// ============================================
+function checkPWARequirements() {
+  const checks = {
+    https: window.location.protocol === 'https:' || window.location.hostname === 'localhost',
+    serviceWorker: 'serviceWorker' in navigator,
+    manifest: document.querySelector('link[rel="manifest"]') !== null
+  };
+  
+  console.log('🔍 PWA REQUIREMENTS CHECK:');
+  console.log(`  📡 HTTPS: ${checks.https ? '✅' : '❌'}`);
+  console.log(`  🔧 Service Worker Support: ${checks.serviceWorker ? '✅' : '❌'}`);
+  console.log(`  📄 Manifest Link: ${checks.manifest ? '✅' : '❌'}`);
+  
+  return checks;
+}
+
+checkPWARequirements();
+
+// ============================================
+// PWA INSTALL PROMPT HANDLING
+// ============================================
+
+// Triggered when browser supports the install prompt
+window.addEventListener('beforeinstallprompt', (e) => {
+  console.log('✅ beforeinstallprompt event fired - PWA is installable');
+  e.preventDefault();
+  deferredPrompt = e;
+  
+  // Only show install button if Android + Chrome
+  if (deviceInfo.isAllowedToInstall && installBtn) {
+    installBtn.style.display = 'flex';
+    console.log('👆 Install button is now visible (Android + Chrome)');
+  } else {
+    console.warn('🚫 Install button HIDDEN - Not Android + Chrome');
+    if (installBtn) installBtn.style.display = 'none';
+  }
+});
+
+// Check if already installed
+if (deviceInfo.isPWA) {
+  console.log('✅ PWA is already installed and running in standalone mode');
+  if (installBtn) installBtn.style.display = 'none';
+} else {
+  console.log('ℹ️ PWA is not installed yet - Running in browser');
+  
+  // Only show install button if Android + Chrome
+  if (deviceInfo.isAllowedToInstall && installBtn) {
+    installBtn.style.display = 'flex';
+    console.log('👆 Install button shown (Android + Chrome detected)');
+  } else {
+    console.warn('🚫 Install button HIDDEN - Only available on Android + Chrome');
+    if (installBtn) installBtn.style.display = 'none';
+  }
+}
+
+// Open popup
+if (installBtn) {
+  installBtn.addEventListener('click', () => {
+    console.log('🔘 Manual install button clicked');
+    
+    // Double-check Android + Chrome before opening popup
+    if (!deviceInfo.isAllowedToInstall) {
+      console.error('🚫 BLOCKED: Install not allowed on this device/browser');
+      alert('❌ App installation is only available on Android devices using Chrome browser.\n\nPlease open this website in Chrome on your Android phone to install the app.');
+      return;
+    }
+    
+    console.log('✅ Opening install popup');
+    if (promptContainer) {
+      promptContainer.style.display = 'block';
+    }
+  });
+}
+
+// Close popup
+if (cancelBtn) {
+  cancelBtn.addEventListener('click', () => {
+    console.log('❌ User clicked "Maybe Later" - Closing popup');
+    if (promptContainer) promptContainer.style.display = 'none';
+  });
+}
+
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    console.log('❌ User clicked close button - Closing popup');
+    if (promptContainer) promptContainer.style.display = 'none';
+  });
+}
+
+// Confirm install
+if (installConfirmBtn) {
+  installConfirmBtn.addEventListener('click', async () => {
+    console.log('🔘 Install button clicked');
+    
+    // Final check: Only allow Android + Chrome
+    if (!deviceInfo.isAllowedToInstall) {
+      console.error('🚫 BLOCKED: Installation blocked - Not Android + Chrome');
+      if (promptContainer) promptContainer.style.display = 'none';
+      
+      // Show detailed message
+      let message = '❌ App Installation Not Available\n\n';
+      
+      if (!deviceInfo.device.isAndroid) {
+        message += '📱 You need an Android device\n';
+      }
+      if (!deviceInfo.browser.isChrome) {
+        message += '🌐 You need to use Chrome browser\n';
+      }
+      
+      message += '\n✅ To install:\n';
+      message += '1. Use an Android phone or tablet\n';
+      message += '2. Open this website in Chrome browser\n';
+      message += '3. Click the install button';
+      
+      alert(message);
+      return;
+    }
+    
+    if (deferredPrompt) {
+      console.log('✅ deferredPrompt available - Triggering install prompt');
+      if (promptContainer) promptContainer.style.display = 'none';
+      
+      try {
+        deferredPrompt.prompt();
+        console.log('📲 Install prompt displayed to user');
+        
+        const { outcome } = await deferredPrompt.userChoice;
+        
+        if (outcome === 'accepted') {
+          console.log('✅ SUCCESS: User accepted the install prompt');
+          console.log('🎉 PWA installation initiated');
+        } else {
+          console.log('❌ FAIL: User dismissed the install prompt');
+          console.log('😔 User chose not to install');
+        }
+        
+        deferredPrompt = null;
+        console.log('🔄 deferredPrompt reset to null');
+      } catch (error) {
+        console.error('❌ ERROR: Failed to show install prompt', error);
+      }
+    } else {
+      console.warn('⚠️ FAIL: deferredPrompt not available');
+      console.warn('ℹ️ Possible reasons:');
+      console.warn('  - PWA criteria not met (manifest, service worker, HTTPS)');
+      console.warn('  - User already installed the app');
+      console.warn('  - beforeinstallprompt event has not fired yet');
+      console.warn('  - Browser does not support PWA installation');
+      
+      // Re-check requirements when install fails
+      checkPWARequirements();
+      detectBrowserAndDevice();
+      
+      // Check if service worker is registered
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          console.log(`📊 Service Worker registrations: ${registrations.length}`);
+          if (registrations.length === 0) {
+            console.warn('⚠️ No service worker is registered!');
+          } else {
+            registrations.forEach((reg, i) => {
+              console.log(`  ${i + 1}. Scope: ${reg.scope}`);
+            });
+          }
+        });
+      }
+    }
+  });
+}
+
+// Detect successful installation
+window.addEventListener('appinstalled', () => {
+  console.log('🎉 SUCCESS: PWA was successfully installed!');
+  console.log('✅ App is now on user\'s home screen');
+  if (installBtn) installBtn.style.display = 'none';
+});
+
+// Monitor display mode changes
+window.matchMedia('(display-mode: standalone)').addEventListener('change', (e) => {
+  if (e.matches) {
+    console.log('🔄 Display mode changed to STANDALONE (PWA mode)');
+  } else {
+    console.log('🔄 Display mode changed to BROWSER mode');
+  }
+});
+
+// Service Worker registration check
+if ('serviceWorker' in navigator) {
+  console.log('✅ Service Worker API is supported');
+} else {
+  console.warn('⚠️ Service Worker API is NOT supported in this browser');
+}
+
+console.log('📋 PWA Install Script Ready');
+console.log('═'.repeat(50));
+</script>
+
+ 
+
+</body>
+
+</html>
