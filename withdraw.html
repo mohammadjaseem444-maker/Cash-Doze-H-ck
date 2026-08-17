@@ -1,0 +1,2618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet | CashDoze</title>
+    <link rel="stylesheet" href="/css/bottombar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+        <!-- PWA Meta Tags -->
+    
+    <!-- Manifest -->
+    
+    <!-- Icons -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Ubuntu:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Remove blue highlight on all elements */
+*:focus,
+*:active {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121224;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* Header */
+        header {
+            padding: 0.2rem 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #212142;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hamburger-menu {
+            font-size: 1.7rem;
+            padding: 0.2rem;
+             cursor: pointer;
+        }
+
+        .header-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            font-family: 'Lexend Deca', sans-serif;
+            margin-left: -0.5rem;
+        }
+
+        .coin-balance {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.3rem 0.8rem;
+            background-color: #f0f0f0;
+            border-radius: 14px;
+        }
+
+        .coin-balance {
+            color: #fa709a;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        .coin-balance .coin-logo {
+            width: 1.6rem;
+            height: 1.6rem;
+        }
+
+        /* Main container to reduce page length */
+        .main-content {
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Wallet cards in compact grid */
+        .wallet-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .wallet-stats {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        .wallet-card {
+            background: linear-gradient(145deg, #262842, #1e1f36);
+            border-radius: 12px;
+            padding: 0.8rem;
+            margin: 0.5rem;
+            margin-top: -0.4rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .wallet-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+        }
+
+        .wallet-card.main::before {
+            background: linear-gradient(90deg, #18fff7, #00c6ff);
+        }
+
+        .wallet-card.pending::before {
+            background: linear-gradient(90deg, #FFC107, #FF8F00);
+        }
+
+        .wallet-card.loyalty::before {
+            background: linear-gradient(90deg, #F1C40F, #F39C12);
+        }
+
+        .wallet-card h3 {
+            font-size: 0.9rem;
+            margin: 0 0 0.3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .wallet-card .amount {
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .wallet-card.main h3 {
+            color: #18fff7;
+        }
+
+        .wallet-card.pending h3 {
+            color: #FFC107;
+        }
+
+        .wallet-card.loyalty h3 {
+            color: #F1C40F;
+        }
+
+        /* Actions row */
+        .actions-row {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            background: linear-gradient(135deg, #4a5ded, #6c5ce7);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.6rem 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 3px 10px rgba(74, 93, 237, 0.2);
+        }
+
+
+
+
+
+        /* Section headers */
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.8rem 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .section-title i {
+    color: #4a5ded;
+  }
+
+  .clickable {
+    color: #4a5ded;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .clickable:hover {
+    opacity: 0.8;
+  }
+
+  .country-list {
+    margin-left: 1.8rem;
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+
+
+
+
+        /* Withdrawal methods */
+        .withdraw-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 0.6rem;
+        }
+
+        .withdraw-option {
+            background: linear-gradient(145deg, #262842, #1e1f36);
+            border-radius: 12px;
+            padding: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 3px solid #4a5ded;
+        }
+
+        .withdraw-option:hover {
+            transform: translateX(3px);
+            background: linear-gradient(145deg, #2a2c48, #22243c);
+        }
+
+        .method-name {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .method-name img {
+            height: 2rem;
+            width: auto;
+            border-radius: 6px;
+        }
+
+        .method-name span {
+            font-weight: 500;
+        }
+
+        /* Loading spinner */
+        .loading-methods {
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Dialog box styles - unchanged as requested */
+        #withdraw-methods-container {
+            margin: 0.5rem 0;
+        }
+        /* Withdraw methods grid - include gift card */
+#withdraw-methods-container .withdraw-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.6rem;
+}
+
+/* Gift card as withdraw option style */
+#withdraw-methods-container .withdraw-option.gift-card-option {
+    background: linear-gradient(145deg, #262842, #1e1f36);
+    border-radius: 12px;
+    padding: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border-left: 3px solid #667eea;
+}
+
+#withdraw-methods-container .withdraw-option.gift-card-option:hover {
+    transform: translateX(3px);
+    background: linear-gradient(145deg, #2a2c48, #22243c);
+}
+
+#withdraw-methods-container .withdraw-option.gift-card-option .method-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #667eea;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+#withdraw-methods-container .withdraw-option.gift-card-option .action-btn {
+    margin: 0;
+    padding: 0.6rem;
+    font-size: 0.85rem;
+}
+/* Enhanced Dialog box styles - Complete Full Screen Coverage with Perfect Spacing */
+/* Base Dialog Styles */
+.dialog-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+    overflow-y: auto;
+}
+
+.dialog-content {
+    background: linear-gradient(145deg, #2a2c42, #232440);
+    border-radius: 14px;
+    width: 95%;
+    max-width: 480px;
+    min-height: 60vh;
+    max-height: 85vh;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    animation: dialogSlideIn 0.3s ease-out;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    background: linear-gradient(145deg, #2a2c42, #232440);
+}
+
+.dialog-header h3 {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #9a9cb5;
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.dialog-body {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    gap: 0.8rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(74, 93, 237, 0.3) transparent;
+}
+
+/* Dynamic sizing based on form complexity with improved spacing */
+
+/* MINIMAL FORM (≤4 elements) - Compact but readable */
+.form-minimal .dialog-body {
+    gap: 1.2rem;
+    padding: 1.5rem;
+}
+
+.form-minimal .valuetext,
+.form-minimal .chargetext {
+    padding: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    border-radius: 10px;
+    line-height: 1.4;
+}
+
+.form-minimal .input-group {
+    gap: 0.5rem;
+    margin-bottom: 0;
+}
+
+.form-minimal .input-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.form-minimal .input-group input,
+.form-minimal .input-group select {
+    padding: 0.9rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    min-height: 44px;
+}
+
+.form-minimal .withdraw-button {
+    padding: 1rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    border-radius: 10px;
+}
+
+.form-minimal .withdrawal-disclaimer {
+    padding: 0.9rem;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+}
+
+.form-minimal .disclaimer-text {
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
+
+/* COMPACT FORM (5 elements) - Balanced spacing */
+.form-compact .dialog-body {
+    gap: 1rem;
+    padding: 1.3rem;
+}
+
+.form-compact .valuetext,
+.form-compact .chargetext {
+    padding: 0.9rem;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    border-radius: 8px;
+    line-height: 1.4;
+}
+
+.form-compact .input-group {
+    gap: 0.4rem;
+    margin-bottom: 0;
+}
+
+.form-compact .input-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.form-compact .input-group input,
+.form-compact .input-group select {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 7px;
+    min-height: 42px;
+}
+
+.form-compact .withdraw-button {
+    padding: 0.95rem;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    border-radius: 9px;
+}
+
+.form-compact .withdrawal-disclaimer {
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 7px;
+}
+
+.form-compact .disclaimer-text {
+    font-size: 0.68rem;
+    line-height: 1.4;
+}
+
+/* STANDARD FORM (6 elements) - Well-balanced */
+.form-standard .dialog-body {
+    gap: 0.8rem;
+    padding: 1.2rem;
+}
+
+.form-standard .valuetext,
+.form-standard .chargetext {
+    padding: 0.8rem;
+    font-size: 0.75rem;
+    margin-bottom: 0;
+    border-radius: 7px;
+    line-height: 1.3;
+}
+
+.form-standard .input-group {
+    gap: 0.4rem;
+    margin-bottom: 0;
+}
+
+.form-standard .input-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.form-standard .input-group input,
+.form-standard .input-group select {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    min-height: 40px;
+}
+
+.form-standard .withdraw-button {
+    padding: 0.9rem;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+}
+
+.form-standard .withdrawal-disclaimer {
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    border-radius: 6px;
+}
+
+.form-standard .disclaimer-text {
+    font-size: 0.65rem;
+    line-height: 1.4;
+}
+
+/* EXTENSIVE FORM (≥7 elements) - Optimized compact with scroll */
+.form-extensive .dialog-body {
+    gap: 0.6rem;
+    padding: 1rem;
+}
+
+.form-extensive .valuetext,
+.form-extensive .chargetext {
+    padding: 0.7rem;
+    font-size: 0.7rem;
+    margin-bottom: 0;
+    border-radius: 6px;
+    line-height: 1.3;
+}
+
+.form-extensive .input-group {
+    gap: 0.3rem;
+    margin-bottom: 0;
+}
+
+.form-extensive .input-group label {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.form-extensive .input-group input,
+.form-extensive .input-group select {
+    padding: 0.7rem;
+    font-size: 0.7rem;
+    border-radius: 6px;
+    min-height: 38px;
+}
+
+.form-extensive .withdraw-button {
+    padding: 0.85rem;
+    font-size: 0.75rem;
+    margin-top: 0.4rem;
+    border-radius: 7px;
+}
+
+.form-extensive .withdrawal-disclaimer {
+    padding: 0.7rem;
+    margin-top: 0.4rem;
+    border-radius: 6px;
+}
+
+.form-extensive .disclaimer-text {
+    font-size: 0.6rem;
+    line-height: 1.3;
+}
+
+/* Common Form Element Styles */
+.valuetext, .chargetext {
+    background: rgba(74, 93, 237, 0.1);
+    border-left: 3px solid #4a5ded;
+    font-family: 'Poppins', sans-serif;
+    color: #e1e3f0;
+}
+
+.valuetext {
+    color: #1fdc26;
+    border-left-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.chargetext {
+    color: #ffc927;
+    border-left-color: #FFC107;
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0;
+    color: #cdd0e0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.3;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    border: 1px solid #3d3f5d;
+    background-color: #1e1f33;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #4a5ded;
+    box-shadow: 0 0 0 2px rgba(74, 93, 237, 0.2);
+}
+
+.input-group input::placeholder {
+    color: #6c6e8a;
+    font-family: 'Poppins', sans-serif;
+}
+
+.withdraw-button {
+    background: linear-gradient(135deg, #4a5ded, #6c5ce7);
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(74, 93, 237, 0.3);
+    flex-shrink: 0;
+}
+
+.withdraw-button:hover {
+    background: linear-gradient(135deg, #5d6cf4, #7868ee);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(74, 93, 237, 0.4);
+}
+
+.withdraw-button:active {
+    transform: translateY(0);
+}
+
+.withdraw-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Withdrawal Disclaimer Styles */
+.withdrawal-disclaimer {
+    background: rgba(255, 193, 7, 0.08);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    flex-shrink: 0;
+}
+
+.disclaimer-icon {
+    color: #FFC107;
+    font-size: 0.8rem;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+}
+
+.disclaimer-text {
+    color: #d0d2e0;
+    text-align: left;
+}
+
+.disclaimer-text strong {
+    color: #FFC107;
+    font-weight: 600;
+}
+
+/* Hide bottom bar when dialog is open */
+.dialog-open .bottom-navbar {
+    display: none !important;
+}
+
+/* Prevent body scroll when dialog is open */
+.dialog-open {
+    overflow: hidden;
+}
+
+/* Mobile Responsiveness - Full Screen Coverage */
+@media (max-width: 768px) {
+    .dialog-overlay {
+        padding: 0;
+        align-items: stretch;
+    }
+    
+    .dialog-content {
+        width: 100vw;
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        min-height: 100vh;
+        border-radius: 0;
+        margin: 0;
+    }
+    
+    .dialog-header {
+        padding: 1rem 1.2rem;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    
+    .dialog-header h3 {
+        font-size: 1rem;
+    }
+    
+    .close-button {
+        font-size: 1.3rem;
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    /* Mobile adjustments for all form types */
+    .dialog-body {
+        padding: 1rem !important;
+        gap: 0.7rem !important;
+        overflow-y: auto !important;
+    }
+    
+    .valuetext,
+    .chargetext {
+        padding: 0.8rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .input-group {
+        gap: 0.4rem !important;
+    }
+    
+    .input-group label {
+        font-size: 0.75rem !important;
+    }
+    
+    .input-group input,
+    .input-group select {
+        padding: 0.75rem !important;
+        font-size: 16px !important; /* Prevent iOS zoom */
+        min-height: 44px !important;
+    }
+    
+    .withdraw-button {
+        padding: 0.9rem !important;
+        font-size: 0.85rem !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    .withdrawal-disclaimer {
+        padding: 0.7rem !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    .disclaimer-text {
+        font-size: 0.65rem !important;
+        line-height: 1.4 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .dialog-header {
+        padding: 0.8rem 1rem;
+    }
+    
+    .dialog-header h3 {
+        font-size: 0.9rem;
+    }
+    
+    .dialog-body {
+        padding: 0.8rem !important;
+        gap: 0.6rem !important;
+    }
+    
+    .valuetext,
+    .chargetext {
+        padding: 0.7rem !important;
+        font-size: 0.7rem !important;
+    }
+    
+    .input-group label {
+        font-size: 0.7rem !important;
+    }
+    
+    .input-group input,
+    .input-group select {
+        padding: 0.7rem !important;
+        font-size: 16px !important;
+        min-height: 42px !important;
+    }
+    
+    .withdraw-button {
+        padding: 0.8rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .disclaimer-text {
+        font-size: 0.6rem !important;
+    }
+}
+
+/* Landscape mode optimizations */
+@media (max-width: 768px) and (orientation: landscape) {
+    .dialog-content {
+        height: 100vh;
+        max-height: 100vh;
+    }
+    
+    .dialog-header {
+        padding: 0.6rem 1rem;
+    }
+    
+    .dialog-body {
+        overflow-y: auto !important;
+        padding: 0.8rem !important;
+        gap: 0.5rem !important;
+    }
+}
+
+/* Extra small height screens */
+@media (max-height: 600px) {
+    .dialog-content {
+        height: 100vh;
+        max-height: 100vh;
+    }
+    
+    .dialog-body {
+        overflow-y: auto !important;
+        padding: 0.7rem !important;
+        gap: 0.4rem !important;
+    }
+    
+    .valuetext, .chargetext {
+        padding: 0.6rem !important;
+        font-size: 0.65rem !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .input-group {
+        gap: 0.2rem !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .input-group label {
+        font-size: 0.65rem !important;
+    }
+    
+    .input-group input,
+    .input-group select {
+        padding: 0.6rem !important;
+        font-size: 0.7rem !important;
+        min-height: 38px !important;
+    }
+    
+    .withdraw-button {
+        margin-top: 0.3rem !important;
+        padding: 0.7rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .withdrawal-disclaimer {
+        margin-top: 0.3rem !important;
+        padding: 0.5rem !important;
+    }
+    
+    .disclaimer-text {
+        font-size: 0.55rem !important;
+        line-height: 1.3 !important;
+    }
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.loading-spinner div[style*="animation"] {
+    width: 30px !important;
+    height: 30px !important;
+    margin-bottom: 0.8rem;
+}
+
+/* Scrollbar styling for dialog body */
+.dialog-body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dialog-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+}
+
+.dialog-body::-webkit-scrollbar-thumb {
+    background: rgba(74, 93, 237, 0.4);
+    border-radius: 2px;
+}
+
+.dialog-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(74, 93, 237, 0.6);
+}
+
+@keyframes dialogSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+        /* Custom Alert Dialog Styles */
+        .custom-alert-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .custom-alert-content {
+            background: linear-gradient(145deg, #2a2c42, #232440);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: alertSlideIn 0.3s ease-out;
+        }
+
+        @keyframes alertSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .custom-alert-header {
+            padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .custom-alert-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .custom-alert-icon.success {
+            color: #4CAF50;
+        }
+
+        .custom-alert-icon.error {
+            color: #f44336;
+        }
+
+        .custom-alert-icon.info {
+            color: #2196F3;
+        }
+
+        .custom-alert-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .custom-alert-body {
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .custom-alert-message {
+            color: #b4b6cc;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-alert-button {
+            width: 100%;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #4a5ded, #6c5ce7);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .custom-alert-button:hover {
+            background: linear-gradient(135deg, #5d6cf4, #7868ee);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(74, 93, 237, 0.3);
+        }
+
+        .custom-alert-button:active {
+            transform: translateY(0);
+        }
+
+        /* Info Icon Styles */
+.info-icon {
+    color: #9a9cb5;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-left: 0.1rem;
+    transition: all 0.2s ease;
+    padding: 0.2rem;
+    border-radius: 50%;
+    position: relative;
+}
+
+.info-icon:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+/* Info Tooltip Styles */
+.info-tooltip {
+    position: fixed;
+    background: linear-gradient(145deg, #2a2c42, #232440);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    max-width: 320px;
+    width: 90vw;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: #e1e3f0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.info-tooltip.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.info-tooltip h4 {
+    margin: 0 0 0.8rem 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-tooltip.loyalty h4 {
+    color: #F1C40F;
+}
+
+.info-tooltip.pending h4 {
+    color: #FFC107;
+}
+
+.info-tooltip ul {
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+}
+
+.info-tooltip li {
+    margin-bottom: 0.5rem;
+    color: #d0d2e0;
+}
+
+.info-tooltip .highlight {
+    color: #2ccb53;;
+    font-weight: 600;
+}
+
+.info-tooltip .close-tooltip {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.7rem;
+    background: none;
+    border: none;
+    color: #9a9cb5;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.info-tooltip .close-tooltip:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Add to your existing styles */
+.wallet-card.virtual-visa::before {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.wallet-card.virtual-visa h3 {
+    color: #667eea;
+}
+
+.wallet-card.virtual-visa .amount {
+    width: 100%;
+}
+
+.wallet-card.virtual-visa .action-btn {
+    width: 100%;
+    margin: 0;
+}
+
+/* Gift Card Grid */
+.giftcard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.giftcard-item {
+    background: linear-gradient(145deg, #262842, #1e1f36);
+    border-radius: 12px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.giftcard-item:hover {
+    transform: translateY(-5px);
+    border-color: #4a5ded;
+    box-shadow: 0 8px 20px rgba(74, 93, 237, 0.3);
+}
+
+.giftcard-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+}
+
+.giftcard-item .name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+}
+
+.giftcard-item .category {
+    font-size: 0.75rem;
+    color: #9a9cb5;
+}
+
+/* Amount Selection Grid */
+.amount-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+
+.amount-option {
+    background: linear-gradient(145deg, #262842, #1e1f36);
+    border: 2px solid #3d3f5d;
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.amount-option:hover {
+    border-color: #4a5ded;
+    transform: scale(1.05);
+}
+
+.amount-option.selected {
+    border-color: #4a5ded;
+    background: linear-gradient(145deg, #4a5ded20, #6c5ce720);
+}
+
+.amount-option .currency-amount {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+}
+
+.amount-option .coin-amount {
+    font-size: 0.85rem;
+    color: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+.amount-option .coin-amount i {
+    font-size: 0.75rem;
+}
+
+.selected-giftcard-info {
+    background: linear-gradient(145deg, #262842, #1e1f36);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.selected-giftcard-info img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.selected-giftcard-details .name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+}
+
+.selected-giftcard-details .category {
+    font-size: 0.8rem;
+    color: #9a9cb5;
+}
+
+.transaction-fee-info {
+    background: rgba(76, 175, 80, 0.1);
+    border-left: 3px solid #4CAF50;
+    padding: 0.8rem;
+    border-radius: 7px;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.purchase-summary {
+    background: linear-gradient(145deg, #262842, #1e1f36);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #4a5ded;
+}
+
+.summary-label {
+    color: #b4b6cc;
+}
+
+.summary-value {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Mobile Info Tooltip Adjustments */
+@media (max-width: 768px) {
+    .info-tooltip {
+        max-width: 280px;
+        width: 85vw;
+        font-size: 0.75rem;
+        padding: 0.8rem;
+    }
+
+    .info-tooltip h4 {
+        font-size: 0.85rem;
+        margin-bottom: 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-tooltip {
+        max-width: 260px;
+        width: 82vw;
+        font-size: 0.7rem;
+        padding: 0.7rem;
+    }
+
+    .info-tooltip h4 {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar starts here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/newsidebar.css">
+    
+    <div class="sidebar" id="sidebar">
+        <div class="profile-sectionsidebar">
+        <div class="avatar-container">
+            <img src="https://api.dicebear.com/9.x/adventurer-neutral/svg?seed&#x3D;Ryan" alt="Profile Avatar" class="avatar">
+        </div>
+        <div class="profile-info">
+            <div class="profile-tagline">Welcome back 👋</div>
+        </div>
+            <div class="back-button" onclick="toggleSidebar()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="white" />
+                </svg>
+            </div>
+        </div>
+    
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="/home">
+                        <div class="icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/wallet">
+                        <div class="icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <span>Wallet</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/trend">
+                        <div class="icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <span>Trending</span>
+                    </a>
+                </li>
+               
+                <li>
+                    <a href="/leaderboard">
+                        <div class="icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <span>Leaderboard</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="/dailymission">
+                        <div class="icon">
+                            <i class="fas fa-list-check"></i>
+                        </div>
+                        <span>Daily Mission</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/share">
+                        <div class="icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <span>Invite & Earn</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile">
+                        <div class="icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <span>Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>    <!-- Sidebar ends here -->
+
+    <header>
+        <div class="nav">
+            <div class="hamburger-menu" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="header-title">
+                 Wallet
+            </div>
+            <div class="coin-balance">
+                <img src="https://gamexapp.b-cdn.net/images/coin_image.png" alt="coins" class="coin-logo">
+                <span class="coin-count">11</span>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="main-content">
+
+      <!-- Wallet cards in compact grid -->
+<div class="wallet-stats">
+    <div class="wallet-card main">
+        <h3><i class="fa-solid fa-wallet"></i> Wallet</h3>
+        <div class="amount"><i class="fa-solid fa-coins"></i> 11</div>
+    </div>
+
+    <div class="wallet-card pending">
+        <h3>
+            <i class="fa-solid fa-clock"></i> Pending
+            <i class="fas fa-info-circle info-icon" onclick="showInfoTooltip(event, 'pending')"></i>
+        </h3>
+        <div class="amount"><i class="fa-solid fa-coins"></i> 0</div>
+    </div>
+
+</div>
+<!-- Info Tooltip -->
+<div id="info-tooltip" class="info-tooltip">
+    <button class="close-tooltip" onclick="hideInfoTooltip()">×</button>
+    <div id="tooltip-content">
+        <!-- Content will be dynamically inserted here -->
+    </div>
+</div>
+
+
+        <!-- Actions row -->
+        <div class="actions-row">
+            <button class="action-btn" id="history-btn"  onclick="window.location.href='/render_transactionhistory';">
+                <i class="fa-solid fa-receipt"></i> Transaction History
+            </button>
+        </div>
+        
+
+        <!-- Withdrawal methods title -->
+        <!-- Title Section -->
+<h2 class="section-title">
+  <i class="fa-solid fa-money-bill-transfer"></i>
+    Withdrawal Methods
+</h2>
+
+<!-- Country List (hidden by default) -->
+<div id="country-list" class="country-list" style="display:none;">
+    <p>
+    🇺🇸 US &nbsp;
+    🇬🇧 GB &nbsp;
+    🇩🇪 DE &nbsp;
+    🇫🇷 FR &nbsp;
+    🇦🇺 AU &nbsp;
+    🇯🇵 JP &nbsp;
+    🇰🇷 KR &nbsp;
+    🇨🇦 CA &nbsp;
+    🇮🇹 IT &nbsp;
+    🇨🇭 CH &nbsp;
+    🇳🇴 NO &nbsp;
+    🇪🇸 ES &nbsp;
+    🇬🇷 GR
+  </p>
+</div>
+
+
+        <!-- Withdrawal methods container -->
+        <div id="withdraw-methods-container">
+            <!-- Loading indicator -->
+            <div class="loading-methods">
+                <div
+                    style="border: 4px solid #2a2c42; border-top: 4px solid #4a5ded; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dialog Box for Withdrawal (unchanged as requested) -->
+    <div id="withdraw-dialog" class="dialog-overlay">
+        <div class="dialog-content">
+            <div class="dialog-header">
+                <h3 id="dialog-title">Withdraw Funds</h3>
+                <button class="close-button" onclick="closeWithdrawDialog()">×</button>
+            </div>
+            <div class="dialog-body" id="withdrawal-form">
+                <!-- Dynamic content will be loaded here -->
+                <div class="loading-spinner" style="display: flex; justify-content: center; margin: 20px 0;">
+                    <div
+                        style="border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Alert Dialog -->
+    <div id="custom-alert" class="custom-alert-overlay">
+        <div class="custom-alert-content">
+            <div class="custom-alert-header">
+                <div id="custom-alert-icon" class="custom-alert-icon">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 id="custom-alert-title" class="custom-alert-title">Success</h3>
+            </div>
+            <div class="custom-alert-body">
+                <div id="custom-alert-message" class="custom-alert-message">
+                    Your request has been processed successfully.
+                </div>
+                <button id="custom-alert-button" class="custom-alert-button" onclick="closeCustomAlert()">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Gift Card Selection Dialog -->
+<div id="giftcard-dialog" class="dialog-overlay">
+    <div class="dialog-content">
+        <div class="dialog-header">
+            <h3 id="giftcard-dialog-title">Select Gift Card</h3>
+            <button class="close-button" onclick="closeGiftCardDialog()">×</button>
+        </div>
+        <div class="dialog-body" id="giftcard-selection">
+            <!-- Dynamic content will be loaded here -->
+        </div>
+    </div>
+</div>
+
+<!-- Gift Card Purchase Dialog -->
+<div id="purchase-dialog" class="dialog-overlay">
+    <div class="dialog-content">
+        <div class="dialog-header">
+            <h3 id="purchase-dialog-title">Purchase Gift Card</h3>
+            <button class="close-button" onclick="closePurchaseDialog()">×</button>
+        </div>
+        <div class="dialog-body" id="purchase-form">
+            <!-- Dynamic content will be loaded here -->
+        </div>
+    </div>
+</div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+
+    <!-- Bottombar starts here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/bottombar.css">
+    
+    <!-- Bottom Navbar -->
+    <nav class="bottom-navbar">
+      <a href="/home"        class="nav-item ">
+        <i class="fas fa-home"></i><span>Home</span>
+      </a>
+      <a href="/wallet"    class="nav-item ">
+        <i class="fas fa-wallet"></i><span>Wallet</span>
+      </a>
+      <a href="/trend" class="nav-item ">
+        <i class="fas fa-fire"></i><span>Trend</span>
+      </a>
+      <a href="/share"  class="nav-item ">
+        <i class="fas fa-gift"></i><span>Share</span>
+      </a>
+      <a href="/profile" class="nav-item ">
+        <i class="fas fa-user"></i><span>Profile</span>
+      </a>
+    </nav>
+    
+    
+    <!-- Bottombar ends here -->
+
+    <script>
+        // Info Tooltip Functions
+function showInfoTooltip(event, type) {
+    event.stopPropagation();
+    
+    const tooltip = document.getElementById('info-tooltip');
+    const content = document.getElementById('tooltip-content');
+    
+    // Set content based on type
+    if (type === 'loyalty') {
+        tooltip.className = 'info-tooltip loyalty show';
+        content.innerHTML = `
+            <h4><i class="fa-solid fa-shield-halved"></i> About Loyalty Coins</h4>
+            <p><strong>🛡️ Loyalty Coins protect you from chargebacks!</strong></p>
+            <ul>
+                <li>Chargebacks occur when survey partners reverse a payment for a completed survey. This mostly occurs in surveys due to low-quality answers, speeding, AI-generated responses, or inconsistent answers.</li>
+                <li>You will earn Loyalty Coins only when you complete a survey.</li>
+                <li>High chargebacks can lead to your account being frozen, suspended, or blocked from completing surveys.</li>
+            </ul>
+            <p style="color: #ffffff; font-weight: 600; margin-top: 0.8rem;">
+                <i class="fas fa-heart" style="color: #e74c3c;"></i> Protecting your hard-earned rewards!
+            </p>
+        `;
+    } else if (type === 'pending') {
+        tooltip.className = 'info-tooltip pending show';
+        content.innerHTML = `
+            <h4><i class="fa-solid fa-clock"></i> About Pending Wallet</h4>
+            <p><strong>💰 Temporary holding for verification</strong></p>
+            <ul>
+                <li><span class="highlight">BitLabs offerwall rewards</span> get added to pending wallet for verification and get released to main wallet automatically after some time.</li>
+                <li>You can check BitLabs offer task description for pending time information.</li>
+                <li><span class="highlight">Sensitive offer rewards</span> also get added to pending wallet for verification and fraud prevention.</li>
+                <li>High-value offers may require manual verification and take longer.</li>
+            </ul>
+        `;
+    }
+    
+    // Position tooltip
+    const rect = event.target.getBoundingClientRect();
+    
+    // Calculate optimal position
+    let left = rect.left + (rect.width / 2) - (320 / 2); // Center horizontally
+    let top = rect.bottom + 10; // Below the icon
+    
+    // Adjust for screen boundaries
+    const padding = 10;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    
+    // Horizontal adjustments
+    if (left < padding) {
+        left = padding;
+    } else if (left + 320 > screenWidth - padding) {
+        left = screenWidth - 320 - padding;
+    }
+    
+    // Vertical adjustments
+    if (top + 300 > screenHeight - padding) {
+        top = rect.top - 300 - 10; // Above the icon
+    }
+    
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = top + 'px';
+    
+    // Show tooltip
+    setTimeout(() => {
+        tooltip.classList.add('show');
+    }, 10);
+}
+
+function hideInfoTooltip() {
+    const tooltip = document.getElementById('info-tooltip');
+    tooltip.classList.remove('show');
+}
+
+// Close tooltip when clicking outside
+document.addEventListener('click', function(event) {
+    const tooltip = document.getElementById('info-tooltip');
+    const infoIcons = document.querySelectorAll('.info-icon');
+    
+    let clickedOnIcon = false;
+    infoIcons.forEach(icon => {
+        if (icon.contains(event.target)) {
+            clickedOnIcon = true;
+        }
+    });
+    
+    if (!tooltip.contains(event.target) && !clickedOnIcon) {
+        hideInfoTooltip();
+    }
+});
+
+// Close tooltip on escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        hideInfoTooltip();
+    }
+});
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+            document.body.classList.toggle('sidebar-active');
+        }
+
+    // Update your showCustomAlert function to ensure it's always on top
+function showCustomAlert(message, type = 'info', title = '') {
+    const overlay = document.getElementById('custom-alert');
+    const icon = document.getElementById('custom-alert-icon');
+    const titleEl = document.getElementById('custom-alert-title');
+    const messageEl = document.getElementById('custom-alert-message');
+
+    // Set message
+    messageEl.textContent = message;
+
+    // Set type-specific styling
+    switch(type) {
+        case 'success':
+            icon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+            icon.className = 'custom-alert-icon success';
+            titleEl.textContent = title || 'Success';
+            break;
+        case 'error':
+            icon.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+            icon.className = 'custom-alert-icon error';
+            titleEl.textContent = title || 'Error';
+            break;
+        case 'info':
+        default:
+            icon.innerHTML = '<i class="fa-solid fa-circle-info"></i>';
+            icon.className = 'custom-alert-icon info';
+            titleEl.textContent = title || 'Information';
+            break;
+    }
+
+    // Force it to be on top
+    overlay.style.zIndex = '99999';
+    overlay.classList.add('show');
+    overlay.style.display = 'flex';
+}
+
+function closeCustomAlert() {
+    const overlay = document.getElementById('custom-alert');
+    overlay.classList.remove('show');
+    overlay.style.display = 'none';
+}
+
+
+        // Close alert when clicking outside
+        document.getElementById('custom-alert').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCustomAlert();
+            }
+        });
+
+        // Close alert with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCustomAlert();
+            }
+        });
+
+        let currentGateway = '';
+
+        function openWithdrawDialog(gatewayType) {
+            currentGateway = gatewayType || 'paypal';
+            const dialog = document.getElementById('withdraw-dialog');
+            dialog.style.display = 'flex';
+
+            // Update dialog title
+            const dialogTitle = document.getElementById('dialog-title');
+            if (dialogTitle) {
+                if (gatewayType === 'paypal') {
+                    dialogTitle.textContent = 'Withdraw to PayPal';
+                } else if (gatewayType === 'googleplay') {
+                    dialogTitle.textContent = 'Withdraw to Google Play';
+                } else if (gatewayType === 'amazon') {
+                    dialogTitle.textContent = 'Withdraw to Amazon';
+                } else if (gatewayType === 'steam') {
+                    dialogTitle.textContent = 'Withdraw to Steam';
+                } else {
+                    dialogTitle.textContent = 'Withdraw Funds';
+                }
+            }
+
+            // Get the form element
+            const withdrawalForm = document.getElementById('withdrawal-form');
+
+            // Only proceed if the element exists
+            if (withdrawalForm) {
+                // Clear previous form and show loading spinner
+                withdrawalForm.innerHTML = `
+                    <div class="loading-spinner" style="display: flex; justify-content: center; margin: 20px 0;">
+                        <div style="border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
+                    </div>
+                `;
+
+                // Fetch gateway-specific data
+                if (typeof fetchPaymentGatewayData === 'function') {
+                    fetchPaymentGatewayData(gatewayType);
+                } else {
+                    console.error('fetchPaymentGatewayData function not defined');
+                    withdrawalForm.innerHTML = `
+                        <div style="color: red; text-align: center;">
+                            Failed to load payment information. Please try again later.
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function closeWithdrawDialog() {
+            document.getElementById('withdraw-dialog').style.display = 'none';
+        }
+
+        // Close dialog when clicking outside
+        window.onclick = function (event) {
+            const dialog = document.getElementById('withdraw-dialog');
+            if (event.target === dialog) {
+                closeWithdrawDialog();
+            }
+        }
+
+                // Enhanced sidebar functionality with auto-hide
+        function initSidebarAutoHide() {
+            const sidebar = document.getElementById('sidebar');
+            
+            // Close sidebar when clicking outside
+            document.addEventListener('click', function(event) {
+                const hamburgerMenu = document.querySelector('.hamburger-menu');
+                
+                // Check if sidebar is active/open
+                if (sidebar && sidebar.classList.contains('active')) {
+                    // Check if the click is outside the sidebar and not on the hamburger menu
+                    if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                        sidebar.classList.remove('active');
+                        document.body.classList.remove('sidebar-active');
+                    }
+                }
+            });
+
+            // Close sidebar on escape key press
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && sidebar && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    document.body.classList.remove('sidebar-active');
+                }
+            });
+
+            // Close sidebar when clicking on sidebar links (optional)
+            if (sidebar) {
+                const sidebarLinks = sidebar.querySelectorAll('a');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        sidebar.classList.remove('active');
+                        document.body.classList.remove('sidebar-active');
+                    });
+                });
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            initSidebarAutoHide()
+            // Add event listener for transaction history button
+            const historyBtn = document.getElementById('history-btn');
+
+            // Function to fetch data from API
+            window.fetchPaymentGatewayData = function (gatewayType) {
+                // Add gateway type as query parameter
+                fetch(`/api/payment-gateway-data?gateway=${gatewayType}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        buildWithdrawalForm(data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching payment gateway data:', error);
+                        // Show error in form
+                        const form = document.getElementById('withdrawal-form');
+                        if (form) {
+                            form.innerHTML = `
+                                <div style="color: red; text-align: center;">
+                                    Failed to load payment information. Please try again later.
+                                </div>
+                            `;
+                        }
+                    });
+            }
+
+           // Updated buildWithdrawalForm function with dynamic sizing
+function buildWithdrawalForm(data) {
+    const form = document.getElementById('withdrawal-form');
+    if (!form) {
+        console.error('withdrawal-form element not found');
+        return;
+    }
+
+    // Calculate total form elements
+    const totalInputs = data.numberofinput || 0;
+    const hasAmountDropdown = (data.numberofamount && data.numberofamount > 0) ? 1 : 0;
+    const totalFormElements = totalInputs + hasAmountDropdown + 2; // +2 for value and charge text
+    
+    // Add dynamic classes based on number of elements
+    const dialogContent = document.querySelector('.dialog-content');
+    if (dialogContent) {
+        // Remove existing size classes
+        dialogContent.classList.remove('form-minimal', 'form-compact', 'form-standard', 'form-extensive');
+        
+        // Add appropriate size class
+        if (totalFormElements <= 4) {
+            dialogContent.classList.add('form-minimal');
+        } else if (totalFormElements <= 5) {
+            dialogContent.classList.add('form-compact');
+        } else if (totalFormElements <= 6) {
+            dialogContent.classList.add('form-standard');
+        } else {
+            dialogContent.classList.add('form-extensive');
+        }
+    }
+
+    let formHTML = `
+        <div class="valuetext">${data.valuetext}</div>
+        <div class="chargetext">${data.chargetext}</div>
+    `;
+
+    // Add input fields based on numberofinput
+    for (let i = 1; i <= data.numberofinput; i++) {
+        const inputLabel = data[`input${i}`];
+        formHTML += `
+            <div class="input-group">
+                <label for="input${i}">${inputLabel}:</label>
+                <input type="text" id="input${i}" class="form-input" required>
+            </div>
+        `;
+    }
+
+    // Add amount selection dropdown if numberofamount > 0
+    if (data.numberofamount > 0) {
+        formHTML += `
+            <div class="input-group">
+                <label for="payment-amount">Choose Amount:</label>
+                <select id="payment-amount" class="form-select" required>
+        `;
+
+        // Add options based on amounttext values
+        for (let i = 1; i <= data.numberofamount; i++) {
+            const amountOption = data[`amounttext${i}`];
+            if (amountOption) {
+                formHTML += `<option value="${i}">${data.symbol}${amountOption}</option>`;
+            }
+        }
+
+        formHTML += `
+                </select>
+            </div>
+        `;
+    }
+
+    // Add confirm button
+   formHTML += `
+    <button class="withdraw-button">Confirm Withdrawal</button>
+    <div class="withdrawal-disclaimer">
+        <i class="fas fa-info-circle disclaimer-icon"></i>
+        <span class="disclaimer-text">
+            <strong>Disclaimer:</strong> The merchants represented are not sponsors of the rewards or affiliated with this service. All logos and trademarks belong to their respective owners. Visit each brand's website for terms and conditions.
+        </span>
+    </div>
+`;
+
+    // Set the form HTML
+    form.innerHTML = formHTML;
+
+    // Add event listener to the confirm button
+    const button = document.querySelector('.withdraw-button');
+    if (button) {
+        button.addEventListener('click', function () {
+            processWithdrawal(data);
+        });
+    }
+}
+
+
+            // Function to process withdrawal
+            function processWithdrawal(data) {
+                // Collect form data
+                let formData = {
+                    gatewayType: currentGateway
+                };
+
+                // Get input values
+                let isValid = true;
+                for (let i = 1; i <= data.numberofinput; i++) {
+                    const input = document.getElementById(`input${i}`);
+                    if (input && !input.value.trim()) {
+                        showCustomAlert(`Please enter ${data[`input${i}`]}`, 'error', 'Validation Error');
+                        isValid = false;
+                        return;
+                    }
+                    if (input) {
+                        formData[`input${i}`] = input.value;
+                    }
+                }
+
+                // Get selected amount
+                const amountSelect = document.getElementById('payment-amount');
+                if (amountSelect && !amountSelect.value) {
+                    showCustomAlert('Please select an amount', 'error', 'Validation Error');
+                    isValid = false;
+                    return;
+                } else if (amountSelect) {
+                    const amountIndex = amountSelect.value;
+                    formData.selectedAmount = data[`amounttext${amountIndex}`];
+                    formData.amountIndex = amountIndex;
+                    formData.numberofinput = data.numberofinput;
+                }
+
+                if (isValid) {
+                    // Show loading spinner
+                    const withdrawalForm = document.getElementById('withdrawal-form');
+                    const originalContent = withdrawalForm.innerHTML;
+                    
+                    withdrawalForm.innerHTML = `
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px;">
+                            <div style="border: 4px solid #f3f3f3; border-top: 4px solid #4a5ded; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 20px;"></div>
+                            <div style="color: #b4b6cc; text-align: center; font-size: 16px; font-weight: 500;">Processing your withdrawal...</div>
+                            <div style="color: #9a9cb5; text-align: center; font-size: 14px; margin-top: 8px;">This may take up to 2 minutes</div>
+                        </div>
+                    `;
+
+                    
+                    // Submit form data to server
+                    fetch('/api/process-withdrawal', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                    .then(response => response.json())
+                    .then(result => {
+                        // Hide loading spinner by restoring original content or closing dialog
+                        if (result.success) {
+                            if(result.message === 'phoneverify'){
+                                window.location.href = '/phoneverify';
+                                return; // stop further processing
+                            }
+                            if(result.message === 'verification'){
+                                window.location.href = '/verification-startpage-didit';
+                                return; // stop further processing
+                            }
+                            showCustomAlert(result.message, 'success', 'Success');
+                            closeWithdrawDialog();
+                        } else {
+                            // Restore original content and show error
+                            withdrawalForm.innerHTML = originalContent;
+                            // Re-attach event listener to the button
+                            const button = withdrawalForm.querySelector('.withdraw-button');
+                            if (button) {
+                                button.addEventListener('click', function () {
+                                    processWithdrawal(data);
+                                });
+                            }
+                            showCustomAlert(result.message, 'error', 'Request Failed');
+                        }
+                    })
+                    .catch(error => {
+                        // Restore original content and show error
+                        withdrawalForm.innerHTML = originalContent;
+                        // Re-attach event listener to the button
+                        const button = withdrawalForm.querySelector('.withdraw-button');
+                        if (button) {
+                            button.addEventListener('click', function () {
+                                processWithdrawal(data);
+                            });
+                        }
+                        showCustomAlert('Failed to process withdrawal. Please try again.', 'error', 'Network Error');
+                        console.error('Withdrawal request failed:', error);
+                    });
+                }
+            }
+
+
+            // Fetch and display payment methods
+            fetchPaymentMethods();
+
+            // Function to fetch payment methods from API
+            function fetchPaymentMethods() {
+                fetch('/api/payment-methods')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(methods => {
+                        displayPaymentMethods(methods);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching payment methods:', error);
+                        const container = document.getElementById('withdraw-methods-container');
+                        if (container) {
+                            container.innerHTML = `
+                                <div style="color: red; text-align: center; margin: 20px 0;">
+                                    Failed to load payment methods. Please refresh the page.
+                                </div>
+                            `;
+                        }
+                    });
+            }
+
+          // Function to display payment methods
+        function displayPaymentMethods(methods) {
+            const container = document.getElementById('withdraw-methods-container');
+            if (!container) {
+                console.error('withdraw-methods-container not found');
+                return;
+            }
+
+            // Clear loading indicator
+            container.innerHTML = '';
+
+            // If no methods available
+            if (!methods || methods.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; margin: 20px 0; color: white;">
+                        No payment methods available at this time.
+                    </div>
+                `;
+                return;
+            }
+
+            // Create container for methods
+            const methodsGrid = document.createElement('div');
+            methodsGrid.className = 'withdraw-methods';
+            container.appendChild(methodsGrid);
+
+            // Add gift card option first
+            const giftCardElement = document.createElement('div');
+            giftCardElement.className = 'withdraw-option gift-card-option';
+            giftCardElement.onclick = function () { openGiftCardDialog(); };
+            
+            giftCardElement.innerHTML = `
+                <div class="method-header">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Upto 24 hrs Delay Payment</span>
+                </div>
+                <button class="action-btn" onclick="event.stopPropagation(); openGiftCardDialog();">
+                    <i class="fa-solid fa-gift"></i> Select Gift Card
+                </button>
+            `;
+
+            // Create HTML for each method
+            methods.forEach((method) => {
+                const methodElement = document.createElement('div');
+                methodElement.className = 'withdraw-option';
+                methodElement.onclick = function () { openWithdrawDialog(method.id); };
+
+                methodElement.innerHTML = `
+                    <div class="method-name">
+                        <img src="${method.imageUrl}" alt="${method.name} logo">
+                        <span>${method.name}</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                `;
+
+                methodsGrid.appendChild(methodElement);
+            });
+
+            methodsGrid.appendChild(giftCardElement);
+
+        }
+
+    });
+    </script>
+    
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const navItems = document.querySelectorAll('.bottom-navbar .nav-item');
+    const currentPath = window.location.pathname;
+
+    // highlight based on URL
+    navItems.forEach(item => {
+      item.classList.remove('active');
+      const itemPath = item.getAttribute('href');
+      if (currentPath.startsWith(itemPath)) {
+        item.classList.add('active');
+      }
+    });
+
+    // allow click to toggle active
+    navItems.forEach(item => {
+      item.addEventListener('click', function() {
+        navItems.forEach(nav => nav.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  });
+    </script>
+
+<script>
+    // Global variables for gift card flow
+let selectedGiftCard = null;
+let selectedAmount = null;
+let userCountry = null;
+
+// Open gift card dialog
+function openGiftCardDialog() {
+    const dialog = document.getElementById('giftcard-dialog');
+    dialog.style.display = 'flex';
+    document.body.classList.add('dialog-open');
+    
+    const content = document.getElementById('giftcard-selection');
+    content.innerHTML = `
+        <div class="loading-spinner" style="display: flex; justify-content: center; margin: 20px 0;">
+            <div style="border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
+        </div>
+    `;
+    
+    // Fetch gift cards
+    fetchGiftCards();
+}
+
+// Close gift card dialog
+function closeGiftCardDialog() {
+    document.getElementById('giftcard-dialog').style.display = 'none';
+    document.body.classList.remove('dialog-open');
+}
+
+// Fetch available gift cards
+function fetchGiftCards() {
+    fetch('/api/giftcards/available')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                userCountry = data.country;
+                displayGiftCards(data.giftcards);
+            } else {
+                showCustomAlert(data.message, 'error', 'Error');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching gift cards:', error);
+            showCustomAlert('Failed to load gift cards. Please try again.', 'error', 'Error');
+        });
+}
+
+// Display gift cards
+function displayGiftCards(giftcards) {
+    const content = document.getElementById('giftcard-selection');
+    
+    if (!giftcards || giftcards.length === 0) {
+        content.innerHTML = `
+            <div style="text-align: center; color: #b4b6cc; padding: 2rem;">
+                <i class="fas fa-gift" style="font-size: 3rem; color: #4a5ded; margin-bottom: 1rem;"></i>
+                <p>No gift cards available for your country at this time.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    let html = '<div class="giftcard-grid">';
+    
+    giftcards.forEach(card => {
+        html += `
+            <div class="giftcard-item" onclick="selectGiftCard('${card.id}')">
+                <img src="${card.imageUrl}" alt="${card.name}">
+                <div class="name">${card.name}</div>
+            </div>
+        `;
+    });
+    
+    html += '</div>';
+    content.innerHTML = html;
+}
+
+// Select gift card and fetch amounts
+function selectGiftCard(cardId) {
+    closeGiftCardDialog();
+    
+    const dialog = document.getElementById('purchase-dialog');
+    dialog.style.display = 'flex';
+    document.body.classList.add('dialog-open');
+    
+    const content = document.getElementById('purchase-form');
+    content.innerHTML = `
+        <div class="loading-spinner" style="display: flex; justify-content: center; margin: 20px 0;">
+            <div style="border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;"></div>
+            <div style="color: #b4b6cc; text-align: center; margin-top: 1rem;">Loading gift card details...</div>
+        </div>
+    `;
+    
+    // Fetch gift card details and amounts
+    fetch(`/api/giftcards/details/${cardId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                selectedGiftCard = data.giftcard;
+                displayPurchaseForm(data.giftcard, data.amounts);
+            } else {
+                showCustomAlert(data.message, 'error', 'Error');
+                closePurchaseDialog();
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching gift card details:', error);
+            showCustomAlert('Failed to load gift card details. Please try again.', 'error', 'Error');
+            closePurchaseDialog();
+        });
+}
+
+// Display purchase form
+function displayPurchaseForm(giftcard, amounts) {
+    const content = document.getElementById('purchase-form');
+    const title = document.getElementById('purchase-dialog-title');
+    
+    title.textContent = `Purchase ${giftcard.name}`;
+    
+    // Determine form complexity for sizing
+    const totalElements = 4; // Card info, amounts, fee, button
+    const dialogContent = document.querySelector('#purchase-dialog .dialog-content');
+    dialogContent.classList.remove('form-minimal', 'form-compact', 'form-standard', 'form-extensive');
+    dialogContent.classList.add('form-compact');
+    
+    let html = `
+        <div class="selected-giftcard-info">
+            <img src="${giftcard.imageUrl}" alt="${giftcard.name}">
+            <div class="selected-giftcard-details">
+                <div class="name">${giftcard.name}</div>
+            </div>
+        </div>
+        
+        <div class="transaction-fee-info">
+            <i class="fas fa-check-circle"></i> Transaction Fee: 0 Coins
+        </div>
+        
+        <div class="input-group">
+            <label>Select Amount:</label>
+            <div class="amount-grid">
+    `;
+    
+    amounts.forEach((amount, index) => {
+        html += `
+            <div class="amount-option" onclick="selectAmount(${index}, ${amount.currencyValue}, ${amount.coinValue}, '${amount.currencySymbol}')">
+                <div class="currency-amount">${amount.currencySymbol}${amount.currencyValue}</div>
+                <div class="coin-amount">
+                    <i class="fa-solid fa-coins"></i> ${amount.coinValue}
+                </div>
+            </div>
+        `;
+    });
+    
+    html += `
+            </div>
+        </div>
+        
+        <div id="purchase-summary" style="display: none;">
+            <div class="purchase-summary">
+                <div class="summary-row">
+                    <span class="summary-label">Gift Card Value:</span>
+                    <span class="summary-value" id="summary-currency">-</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Coin Cost:</span>
+                    <span class="summary-value" id="summary-coins">-</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Transaction Fee:</span>
+                    <span class="summary-value" style="color: #4CAF50;">0 Coins</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Total Cost:</span>
+                    <span class="summary-value" id="summary-total">-</span>
+                </div>
+            </div>
+        </div>
+        
+        <button class="withdraw-button" id="confirm-purchase-btn" disabled onclick="confirmGiftCardPurchase()">
+            <i class="fas fa-shopping-cart"></i> Confirm Purchase
+        </button>
+        
+        <div class="withdrawal-disclaimer">
+            <i class="fas fa-info-circle disclaimer-icon"></i>
+            <span class="disclaimer-text">
+                <strong>Disclaimer:</strong> The merchants represented are not sponsors of the rewards or affiliated with this service. All logos and trademarks belong to their respective owners. Gift cards are delivered via email within 24-48 hours.
+            </span>
+        </div>
+    `;
+    
+    content.innerHTML = html;
+}
+
+// Select amount
+function selectAmount(index, currencyValue, coinValue, currencySymbol) {
+    // Remove previous selection
+    document.querySelectorAll('.amount-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    
+    // Add selection to clicked option
+    event.target.closest('.amount-option').classList.add('selected');
+    
+    selectedAmount = {
+        index,
+        currencyValue,
+        coinValue,
+        currencySymbol
+    };
+    
+    // Update summary
+    document.getElementById('summary-currency').textContent = `${currencySymbol}${currencyValue}`;
+    document.getElementById('summary-coins').textContent = `${coinValue} Coins`;
+    document.getElementById('summary-total').textContent = `${coinValue} Coins`;
+    
+    // Show summary and enable button
+    document.getElementById('purchase-summary').style.display = 'block';
+    document.getElementById('confirm-purchase-btn').disabled = false;
+}
+
+// Close purchase dialog
+function closePurchaseDialog() {
+    document.getElementById('purchase-dialog').style.display = 'none';
+    document.body.classList.remove('dialog-open');
+    selectedGiftCard = null;
+    selectedAmount = null;
+}
+
+// Confirm gift card purchase
+function confirmGiftCardPurchase() {
+    if (!selectedGiftCard || !selectedAmount) {
+        showCustomAlert('Please select an amount', 'error', 'Error');
+        return;
+    }
+    
+    const content = document.getElementById('purchase-form');
+    const originalContent = content.innerHTML;
+    
+    content.innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px;">
+            <div style="border: 4px solid #f3f3f3; border-top: 4px solid #4a5ded; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 20px;"></div>
+            <div style="color: #b4b6cc; text-align: center; font-size: 16px; font-weight: 500;">Processing your purchase...</div>
+            <div style="color: #9a9cb5; text-align: center; font-size: 14px; margin-top: 8px;">This may take a moment</div>
+        </div>
+    `;
+    
+    // Submit purchase
+    fetch('/api/giftcards/purchase', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            giftcardId: selectedGiftCard.id,
+            amountIndex: selectedAmount.index,
+            currencyValue: selectedAmount.currencyValue,
+            coinValue: selectedAmount.coinValue,
+            currencySymbol: selectedAmount.currencySymbol
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            if (result.message === 'phoneverify') {
+                window.location.href = '/phoneverify';
+                return;
+            }
+            if (result.message === 'verification') {
+                window.location.href = '/verification-startpage-didit';
+                return;
+            }
+            showCustomAlert(result.message, 'success', 'Success');
+            closePurchaseDialog();
+            // Optionally refresh the page to update coin balance
+           // setTimeout(() => {
+            //    window.location.reload();
+          //  }, 2000);
+        } else {
+            content.innerHTML = originalContent;
+            showCustomAlert(result.message, 'error', 'Purchase Failed');
+        }
+    })
+    .catch(error => {
+        content.innerHTML = originalContent;
+        showCustomAlert('Failed to process purchase. Please try again.', 'error', 'Error');
+        console.error('Purchase error:', error);
+    });
+}
+
+// Close dialogs when clicking outside
+window.onclick = function(event) {
+    const giftcardDialog = document.getElementById('giftcard-dialog');
+    const purchaseDialog = document.getElementById('purchase-dialog');
+    const withdrawDialog = document.getElementById('withdraw-dialog');
+    
+    if (event.target === giftcardDialog) {
+        closeGiftCardDialog();
+    }
+    if (event.target === purchaseDialog) {
+        closePurchaseDialog();
+    }
+    if (event.target === withdrawDialog) {
+        closeWithdrawDialog();
+    }
+};
+</script>
+
+  <!-- PWA Scripts -->
+
+
+<script>
+  // Wait for page to load
+  document.addEventListener("DOMContentLoaded", () => {
+
+    // When user clicks "Verisoul"
+    const verisoulLink = document.getElementById("verisoul-link");
+    if (verisoulLink) {
+      verisoulLink.addEventListener("click", () => {
+        window.open("https://www.verisoul.ai", "_blank");
+      });
+    }
+
+    // When user clicks "countries"
+    const countriesLink = document.getElementById("countries-link");
+    const countryList = document.getElementById("country-list");
+    if (countriesLink && countryList) {
+      countriesLink.addEventListener("click", () => {
+        if (countryList.style.display === "none" || countryList.style.display === "") {
+          countryList.style.display = "block";
+        } else {
+          countryList.style.display = "none";
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+
+</html>
